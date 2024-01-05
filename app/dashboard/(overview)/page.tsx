@@ -1,5 +1,9 @@
 import { lusitana } from '@/app/ui/fonts';
  
-export default async function Page() {
-    return <div className='text-2xl'>Home Page</div>
+export default function Page() {
+    return (
+      <main>
+        <h1>Hospitationlist Page</h1>
+      </main>
+    )
 }
