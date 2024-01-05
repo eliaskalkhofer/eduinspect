@@ -22,3 +22,8 @@ export type Teacher = {
     ht_id: number;
     feedback: string;
   }
+
+  export type User = {
+    username : string
+    password: number
+  }
