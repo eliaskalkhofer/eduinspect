@@ -7,6 +7,7 @@ import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { MongoClient } from 'mongodb';
 import { connectToDatabase, closeDatabaseConnection, getDatabaseClient } from '@/app/lib/dbmongo';
+import { execute } from '@/app/lib/db';
 
 const FormSchema = z.object({
   id: z.string(),
@@ -99,7 +100,7 @@ export async function authenticate(
   }
 }
 
-export async function testfunction2() {
+export async function testfunction1() {
   try {
     await connectToDatabase();
     const client = getDatabaseClient();
@@ -118,7 +119,7 @@ export async function testfunction2() {
   }
 }
 
-export async function testfunction() {
+export async function testfunction2() {
   const uri = process.env.MONGODB_URI;
 
   if (!uri) {
@@ -151,4 +152,15 @@ export async function testfunction() {
     }
 
   }
+}
+
+export async function testfunction() {
+
+  try {
+    const result = await execute("users", {username: "LOIS"});
+    console.log(result);
+  } 
+  catch (error) {
+    console.error('Error:', error);
+  } 
 }
