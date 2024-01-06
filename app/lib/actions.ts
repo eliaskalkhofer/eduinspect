@@ -154,7 +154,7 @@ export async function testfunction2() {
   }
 }
 
-export async function testfunction() {
+export async function testfunction3() {
 
   try {
     const result = await execute("users", {username: "LOIS"});
@@ -163,4 +163,17 @@ export async function testfunction() {
   catch (error) {
     console.error('Error:', error);
   } 
+}
+
+export async function testfunction(email: string) {
+  
+  try {
+    const user = await sql`SELECT * FROM users WHERE name = 'User'`;
+    const testuser = user.rows[0];
+    
+    console.log("Email vom Benutzer: " + testuser.email);
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
+  }
 }
