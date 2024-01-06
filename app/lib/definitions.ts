@@ -24,6 +24,8 @@ export type Teacher = {
   }
 
   export type User = {
-    username : string
-    password: number
-  }
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+  };
