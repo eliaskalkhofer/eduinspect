@@ -96,3 +96,11 @@ export async function createInvoice(formData: FormData) {
       throw error;
     }
   }
+
+  export async function testfunction() {
+    try {
+      console.log('Try...');
+    } catch (error) {
+      console.log('Catch...');
+    }
+  }
