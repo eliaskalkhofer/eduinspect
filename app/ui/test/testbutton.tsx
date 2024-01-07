@@ -1,12 +1,12 @@
 "use client"
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { testfunction1,testfunction2,testfunction3 } from '@/app/lib/test/testactions';
+import { testfunction, testfunction1,testfunction2,testfunction3 } from '@/app/lib/test/testactions';
 
 export function ButtonForTests() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    testfunction1();
+    testfunction();
   };
 
   return (

@@ -40,7 +40,15 @@ const hospitations = [
   	endtime: "10:30",
  	subject: "MEDT",
   	information: "Grundlagen JS",
- 	status: "verfügbar",
+ 	status: "verfügbar"
+},
+{
+    "date": "04.04.2024",
+   starttime: "09:40",
+    endtime: "10:30",
+   subject: "MEDT",
+    information: "Grundlagen Node Js",
+   status: "verfügbar"
 }
 ]
 

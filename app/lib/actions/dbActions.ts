@@ -1,5 +1,5 @@
 
-import { mongoExecute } from "./dbFind";
+import { mongoFind } from "./dbFind";
 import type { User } from '@/app/lib/definitions';
 import { Document } from 'mongodb';
 
@@ -7,7 +7,7 @@ export async function getUser(username: string): Promise<User | undefined> {
     try {
         const colelctionString = `users`;
         const queryString = `{"username": "${username}"}`;
-        const results = await mongoExecute(colelctionString, queryString);
+        const results = await mongoFind(colelctionString, queryString);
 
         if (results && results.length > 0) {
             const user: Document = results[0];
@@ -15,7 +15,6 @@ export async function getUser(username: string): Promise<User | undefined> {
             const formattedUser: User = {
                 id: user._id.toString(),
                 name: user.username,
-                email: user.email,
                 password: user.password,
             };
 

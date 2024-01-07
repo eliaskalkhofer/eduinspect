@@ -74,7 +74,7 @@ async function main() {
         console.error('seed---Fehler beim Verbindungsaufbau zur Datenbank:', error);
     }
 
-    await seedUsers(client);
+    //await seedUsers(client);
     //await seedHospitations(client);
 
     try {

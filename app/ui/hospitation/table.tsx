@@ -1,18 +1,19 @@
-export default async function HospitationTable({
-  query,
-  currentPage,
-}: {
-  query: string;
-  currentPage: number;
-}) {
-  //const invoices = await fetchFilteredInvoices(query, currentPage);
+import { fetchFilteredInvoices, fetchAvailableHospitations } from '@/app/lib/data';
+
+export default async function HospitationTable() {
+
+  //const invoices = await fetchFilteredInvoices("", 1);
+  const hospitations = await fetchAvailableHospitations();
+
 
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-        
+
+
+
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
@@ -41,6 +42,34 @@ export default async function HospitationTable({
               </tr>
             </thead>
             <tbody className="bg-white">
+
+              {hospitations?.map((hospitation) => (
+                <tr
+                  key={hospitation.id}
+                  className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                >
+                  <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                    <div className="flex items-center gap-3">
+                      <p>{hospitation.date}</p>
+                    </div>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {hospitation.starttime}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {hospitation.endtime}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {hospitation.subject}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {hospitation.information}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    Button comming soon;
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

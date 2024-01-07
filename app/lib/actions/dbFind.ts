@@ -10,7 +10,7 @@ if (!uri) {
 
 const client = new MongoClient(uri);
 
-export const mongoExecute = async (collection: string, query: string) => {
+export const mongoFind = async (collection: string, query: string) => {
     try {
         await client.connect();
         console.log('db---Erfolgreich mit der Datenbank verbunden!');
