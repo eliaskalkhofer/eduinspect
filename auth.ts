@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { getUser } from './app/lib/actions/dbActions';
+import bcrypt from 'bcrypt';
 
  
 export const { auth, signIn, signOut } = NextAuth({

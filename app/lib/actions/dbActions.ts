@@ -1,5 +1,5 @@
 
-import { mongoExecute } from "./dbConnection";
+import { mongoExecute } from "./dbFind";
 import type { User } from '@/app/lib/definitions';
 import { Document } from 'mongodb';
 

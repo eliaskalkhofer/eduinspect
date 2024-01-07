@@ -1,6 +1,6 @@
 'use server';
 
-import { mongoExecute } from '@/app/lib/actions/dbConnection';
+import { mongoExecute } from '@/app/lib/actions/dbFind';
 import { User } from '@/app/lib/definitions';
 import { MongoClient } from 'mongodb';
   
