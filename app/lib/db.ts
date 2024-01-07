@@ -15,6 +15,7 @@ export const execute = async (collection: string, query: { username: string }) =
         const databaseObj = client.db("eduinspect");
         const collectionObj = databaseObj.collection(collection);
         const result = await collectionObj.find(query).toArray();
+        console.log(result);
         return result;
     } 
     catch (error) {

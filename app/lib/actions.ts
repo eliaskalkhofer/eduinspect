@@ -8,6 +8,7 @@ import { AuthError } from 'next-auth';
 import { MongoClient } from 'mongodb';
 import { connectToDatabase, closeDatabaseConnection, getDatabaseClient } from '@/app/lib/dbmongo';
 import { execute } from '@/app/lib/db';
+import { User } from '@/app/lib/definitions';
 
 const FormSchema = z.object({
   id: z.string(),
@@ -138,13 +139,13 @@ export async function testfunction2() {
 
     const result = await collection.find({ username: "LOIS" }).toArray();
 
-  
+
     console.log('Data: ' + JSON.stringify(result, null, 2));
     console.log('Der Benutzername lautet: ' + result[0].username);
-    
+
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
-  } 
+  }
   finally {
     if (client) {
       await client.close();
@@ -154,24 +155,40 @@ export async function testfunction2() {
   }
 }
 
-export async function testfunction3() {
+export async function testfunction() {
 
   try {
-    const result = await execute("users", {username: "LOIS"});
-    console.log(result);
-  } 
+    const result = await execute("users", { username: "LOIS" });
+    
+    if(result) {
+      //const formatedresult = result[0];
+      //console.log(formatedresult);
+    }
+  }
   catch (error) {
     console.error('Error:', error);
-  } 
+  }
 }
 
-export async function testfunction(email: string) {
-  
+export async function testfunction4(email: string) {
+
   try {
     const user = await sql`SELECT * FROM users WHERE name = 'User'`;
     const testuser = user.rows[0];
-    
-    console.log("Email vom Benutzer: " + testuser.email);
+    console.log(testuser);
+
+    const user2 = await sql<User>`SELECT * FROM users WHERE name='User'`;
+    const testuser2 = user2.rows[0];
+    console.log(testuser2);
+
+    /* Ergebnis: 
+    {
+      id: '410544b2-4001-4271-9855-fec4b6a6442a',
+      name: 'User',
+      email: 'user@nextmail.com',
+      password: '$2b$10$BbpfiHgsHULF3bDbkpLIwOqA6EXpP4WQfJ0EJf.2ystonOke2sN6a'
+    }
+    */
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
