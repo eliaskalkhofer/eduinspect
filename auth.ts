@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { getUser } from './app/lib/actions/dbActions';
 import bcrypt from 'bcrypt';
 
- 
+
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
@@ -14,16 +14,16 @@ export const { auth, signIn, signOut } = NextAuth({
         const parsedCredentials = z
           .object({ username: z.string(), password: z.string().min(4) })
           .safeParse(credentials);
- 
+
         if (parsedCredentials.success) {
           const { username, password } = parsedCredentials.data;
           const user = await getUser(username);
           if (!user) return null;
-          if(password == user.password) {
-            return user;
-          }
+          const passwordsMatch = await bcrypt.compare(password, user.password);
+
+          if (passwordsMatch) return user;
         }
- 
+
         console.log('Invalid credentials');
         return null;
       },
