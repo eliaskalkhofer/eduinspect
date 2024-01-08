@@ -14,16 +14,17 @@ const db = process.env.MONGODB_DB;
 
 export async function getUser(username: string): Promise<User | undefined> {
     try {
-        const colelctionString = `users`;
+        const collectionString = `users`;
         const queryString = `{"username": "${username}"}`;
-        const results = await mongoFind(colelctionString, queryString);
+        const results = await mongoFind(collectionString, queryString);
+        console.log("dbactions---Suche nacht: " + queryString);
 
         if (results && results.length > 0) {
             const user: Document = results[0];
 
             const formattedUser: User = {
                 id: user._id.toString(),
-                name: user.username,
+                username: user.username,
                 firstname: user.firstname,
                 lastname: user.lastname,
                 password: user.password,

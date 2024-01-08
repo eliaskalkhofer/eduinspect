@@ -4,6 +4,9 @@ import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 export default async function HospitationTable() {
 
   const hospitations = await fetchAvailableHospitations();
+  if(hospitations && hospitations.length > 0) {
+    console.log("table---Hospitations angekommen");
+  }
 
   return (
     <div className="mt-6 flow-root">

@@ -37,7 +37,7 @@ export type Teacher = {
 
   export type User = {
     id:string;
-    name: string;
+    username: string;
     firstname: string;
     lastname: string;
     password: string;
