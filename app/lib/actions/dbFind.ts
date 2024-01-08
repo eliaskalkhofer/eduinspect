@@ -13,7 +13,7 @@ const client = new MongoClient(uri);
 export const mongoFind = async (collection: string, query: string) => {
     try {
         await client.connect();
-        console.log('db---Erfolgreich mit der Datenbank verbunden!');
+        console.log('dbFind---Clientverbindung erfolgreich aufgebaut!');
 
         const databaseObj = client.db(db);
         const collectionObj = databaseObj.collection(collection);
@@ -21,16 +21,15 @@ export const mongoFind = async (collection: string, query: string) => {
         const queryParsed = JSON.parse(query);
 
         const result = await collectionObj.find(queryParsed).toArray();
-        console.log("db---Ergebnis der Datenbankabfrage: "+ JSON.stringify(result));
         return result;
     } 
     catch (error) {
-        console.error('db---Fehler beim Verbindungsaufbau zur Datenbank: ', error);
+        console.error('dbFind---Fehler beim Verbindungsaufbau zur Datenbank: ', error);
     } 
     finally {
         if (client) {
           await client.close();
-          console.log('db---Client erfolgreich geschlossen!');
+          console.log('dbFind---Client erfolgreich geschlossen!');
         }
       }
 }
