@@ -13,13 +13,14 @@ const client = new MongoClient(uri);
 export const mongoFind = async (collection: string, query: string) => {
     try {
         await client.connect();
-        console.log('dbFind---Clientverbindung erfolgreich aufgebaut!');
+        console.log('dbFind---Clientverbindung erfolgreich aufgebaut');
 
         const databaseObj = client.db(db);
         const collectionObj = databaseObj.collection(collection);
 
         const queryParsed = JSON.parse(query);
-
+        
+        console.log("dbFind---Suche in " + db + "/" + collection + " nach: " + query);
         const result = await collectionObj.find(queryParsed).toArray();
         return result;
     } 
@@ -29,7 +30,7 @@ export const mongoFind = async (collection: string, query: string) => {
     finally {
         if (client) {
           await client.close();
-          console.log('dbFind---Client erfolgreich geschlossen!');
+          console.log('dbFind---Client erfolgreich geschlossen');
         }
       }
 }

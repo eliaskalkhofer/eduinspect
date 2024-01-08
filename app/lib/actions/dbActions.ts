@@ -16,9 +16,12 @@ export async function getUser(username: string): Promise<User | undefined> {
     try {
         const collectionString = `users`;
         const queryString = `{"username": "${username}"}`;
-        console.log("dbactions---Suche nacht: " + queryString);
+        console.log("dbactions---Suche nach: " + queryString);
         const results = await mongoFind(collectionString, queryString);
-        console.log("dbactions---Results: " + JSON.stringify(results));
+
+        const logResultsString = JSON.stringify(results);
+        const truncatedString = logResultsString.substring(0, 60);
+        console.log("dbactions---Results: " + truncatedString + "...");
 
         if (results && results.length > 0) {
             const user: Document = results[0];
@@ -31,7 +34,7 @@ export async function getUser(username: string): Promise<User | undefined> {
                 password: user.password,
             };
 
-            console.log("dbactions---Benutzer erhalten und formatiet");
+            console.log("dbactions---Benutzer erhalten und formatiert");
             //console.log(JSON.stringify(formattedUser)); Benutzer ausgeben
 
             return formattedUser;
