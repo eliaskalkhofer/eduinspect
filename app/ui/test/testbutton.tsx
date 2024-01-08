@@ -1,6 +1,6 @@
 "use client"
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { testfunction, testfunction1,testfunction2,testfunction3 } from '@/app/lib/test/testactions';
+import { testfunction } from '@/app/lib/test/testactions';
 
 export function ButtonForTests() {
 

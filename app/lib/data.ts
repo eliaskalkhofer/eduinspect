@@ -20,6 +20,15 @@ export async function fetchAvailableHospitations() {
 
   try {
     const availableHospitations = await mongoFind("hospitations", '{"status":"verfügbar"}');
+    
+    //Print the id of a example
+    /*
+    if(availableHospitations) {
+      const hosp = availableHospitations[0];
+      console.log("data---ID: " + hosp._id)
+    }    
+    */
+
     return availableHospitations;
   } 
   catch (error) {

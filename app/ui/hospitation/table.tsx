@@ -12,7 +12,37 @@ export default async function HospitationTable() {
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
 
-
+            {hospitations?.map((hospitation) => (
+              <div
+                key={String(hospitation._id)}
+                className="mb-2 w-full rounded-md bg-white p-4"
+              >
+                <div className="flex w-full items-center justify-between pt-4">
+                  <div>
+                    <p className="text-xl font-medium">
+                      {hospitation.date}
+                    </p>
+                    <p className="text-xl font-medium">
+                      {hospitation.starttime}
+                    </p>
+                    <p className="text-xl font-medium">
+                      {hospitation.endtime}
+                    </p>
+                    <p className="text-xl font-medium">
+                      {hospitation.subject}
+                    </p>
+                    <p className="text-xl font-medium">
+                      {hospitation.information}
+                    </p>
+                  </div>
+                  <div className="flex justify-end gap-2">
+                    <p>
+                      Button comming soon
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
 
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
@@ -45,13 +75,11 @@ export default async function HospitationTable() {
 
               {hospitations?.map((hospitation) => (
                 <tr
-                  key={hospitation.id}
+                  key={String(hospitation._id)}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
-                  <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                    <div className="flex items-center gap-3">
-                      <p>{hospitation.date}</p>
-                    </div>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {hospitation.date}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {hospitation.starttime}

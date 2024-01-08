@@ -12,7 +12,7 @@ export default function Page() {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search teacher..." />
       </div>
-      <HospitationTable query="0" currentPage={1} />
+      <HospitationTable/>
     </div>
   )
 }
