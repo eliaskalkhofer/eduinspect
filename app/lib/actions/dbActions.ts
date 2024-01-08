@@ -16,8 +16,9 @@ export async function getUser(username: string): Promise<User | undefined> {
     try {
         const collectionString = `users`;
         const queryString = `{"username": "${username}"}`;
-        const results = await mongoFind(collectionString, queryString);
         console.log("dbactions---Suche nacht: " + queryString);
+        const results = await mongoFind(collectionString, queryString);
+        console.log("dbactions---Results: " + JSON.stringify(results));
 
         if (results && results.length > 0) {
             const user: Document = results[0];
