@@ -19,6 +19,12 @@ export default async function HospitationTable() {
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
                     <p className="text-xl font-medium">
+                      {hospitation.teacherFirstname}
+                    </p>
+                    <p className="text-xl font-medium">
+                      {hospitation.teacherLastname}
+                    </p>
+                    <p className="text-xl font-medium">
                       {hospitation.date}
                     </p>
                     <p className="text-xl font-medium">
