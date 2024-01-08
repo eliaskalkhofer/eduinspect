@@ -24,6 +24,8 @@ export async function getUser(username: string): Promise<User | undefined> {
             const formattedUser: User = {
                 id: user._id.toString(),
                 name: user.username,
+                firstname: user.firstname,
+                lastname: user.lastname,
                 password: user.password,
             };
 

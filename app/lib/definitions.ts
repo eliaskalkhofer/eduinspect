@@ -25,6 +25,8 @@ export type Teacher = {
 
   export type HospitationsTable = {
     id: string;
+    teacherFirstname: string;
+    teacherLastname: string;
     date: string;
     starttime: string;
     endtime: string;
@@ -36,6 +38,8 @@ export type Teacher = {
   export type User = {
     id:string;
     name: string;
+    firstname: string;
+    lastname: string;
     password: string;
   };
 
