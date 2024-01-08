@@ -18,6 +18,8 @@ async function seedUsers(client) {
                 const collectionObj = databaseObj.collection("users");
                 const result = await collectionObj.insertOne({
                     username: user.username,
+                    firsname: user.firsname,
+                    lastname: user.lastname,
                     password: hashedPassword
                 });
             }),
@@ -42,6 +44,9 @@ async function seedHospitations(client) {
                 const databaseObj = client.db("eduinspect");
                 const collectionObj = databaseObj.collection("hospitations");
                 const result = await collectionObj.insertOne({
+                    teacherUsername: hospitation.teacherUsername,
+                    teacherFirstname: hospitation.teacherFirstname,
+                    teacherLastname: hospitation.teacherLastname,
                     date: hospitation.date,
                     starttime: hospitation.starttime,
                     endtime: hospitation.endtime,
@@ -74,8 +79,8 @@ async function main() {
         console.error('seed---Fehler beim Verbindungsaufbau zur Datenbank:', error);
     }
 
-    //await seedUsers(client);
-    //await seedHospitations(client);
+    await seedUsers(client);
+    await seedHospitations(client);
 
     try {
         await client.close();
