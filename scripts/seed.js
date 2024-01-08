@@ -47,6 +47,7 @@ async function seedHospitations(client) {
                     teacherUsername: hospitation.teacherUsername,
                     teacherFirstname: hospitation.teacherFirstname,
                     teacherLastname: hospitation.teacherLastname,
+                    implementingTeacher : hospitation.implementingTeacher,
                     date: hospitation.date,
                     starttime: hospitation.starttime,
                     endtime: hospitation.endtime,
@@ -79,7 +80,7 @@ async function main() {
         console.error('seed---Fehler beim Verbindungsaufbau zur Datenbank:', error);
     }
 
-    await seedUsers(client);
+    //await seedUsers(client);
     await seedHospitations(client);
 
     try {

@@ -3,14 +3,14 @@ import { mongoFind } from "./dbFind";
 import type { User } from '@/app/lib/definitions';
 import { Document, ObjectId } from 'mongodb';
 import { revalidatePath } from 'next/cache';
-import { 
-    connectToDatabase, 
-    closeDatabaseConnection, 
-    getDatabaseClient 
+import {
+    connectToDatabase,
+    closeDatabaseConnection,
+    getDatabaseClient
 } from '@/app/lib/actions/db';
 
-
 const db = process.env.MONGODB_DB;
+
 
 export async function getUser(username: string): Promise<User | undefined> {
     try {
@@ -45,7 +45,7 @@ export async function getUser(username: string): Promise<User | undefined> {
     }
 }
 
-export async function setStatusAssignedWithId(id: string) {
+export async function assginHospitation(id: string) {
 
     try {
         await connectToDatabase();
@@ -69,7 +69,7 @@ export async function setStatusAssignedWithId(id: string) {
         } else {
             console.log('dbActions---Objekt mit der angegebenen ID nicht gefunden oder der Status wurde nicht geändert');
         }
-    } 
+    }
     catch (err) {
         console.log("dbActions---Fehler: " + err);
     }
@@ -79,3 +79,4 @@ export async function setStatusAssignedWithId(id: string) {
         //console.log("dbActions---Clientverbindung erfolgreich geschlossen");
     }
 }
+

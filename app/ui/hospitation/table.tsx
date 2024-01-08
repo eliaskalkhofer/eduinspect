@@ -5,7 +5,7 @@ export default async function HospitationTable() {
 
   const hospitations = await fetchAvailableHospitations();
   if(hospitations && hospitations.length > 0) {
-    console.log("table---Hospitations angekommen");
+    console.log("table---Hospitationen angekommen");
   }
 
   return (
