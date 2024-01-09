@@ -45,7 +45,6 @@ export default async function HospitationTable() {
                   </div>
                   <div className="flex justify-end gap-2">
                     <p>
-                      Button comming soon
                     </p>
                   </div>
                 </div>

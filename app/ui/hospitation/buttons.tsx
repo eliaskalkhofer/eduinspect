@@ -1,10 +1,10 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { setStatusAssignedWithId } from '@/app/lib/actions/dbActions';
+import { assginHospitation } from '@/app/lib/actions/dbActions';
 
 export function AcceptHospitation({ id }: { id: string }) {
-  const setStatusAssgined = setStatusAssignedWithId.bind(null, id);
+  const setStatusAssgined = assginHospitation.bind(null, id);
   const [isHovered, setIsHovered] = useState(false);
   //console.log("buttons---id: " + id);
 

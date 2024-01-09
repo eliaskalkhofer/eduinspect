@@ -10,7 +10,7 @@ export default function Page() {
             <br></br>
             <div className="flex w-full items-center justify-between">
                 <ButtonForTests />
-            br</div>
+            </div>
         </div>
     );
 }

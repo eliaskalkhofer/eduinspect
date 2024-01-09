@@ -1,4 +1,3 @@
-
 export type Teacher = {
     _id: string;
     t_id: number;
@@ -37,6 +36,14 @@ export type Teacher = {
 
   export type User = {
     id:string;
+    username: string;
+    firstname: string;
+    lastname: string;
+    password: string;
+  };
+
+  export type MongodbUser = {
+    _id:string;
     username: string;
     firstname: string;
     lastname: string;
