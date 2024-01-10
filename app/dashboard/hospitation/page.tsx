@@ -1,6 +1,8 @@
 import { lusitana } from '@/app/ui/fonts';
 import HospitationTable from '@/app/ui/hospitation/table';
 import Search from '@/app/ui/hospitation/search';
+import { Suspense } from 'react';
+import { HospitationTableSkeleton } from '@/app/ui/skeletons';
 
 export default function Page() {
 
@@ -10,9 +12,12 @@ export default function Page() {
         <h1 className={`${lusitana.className} text-2xl`}>Hospitation tätigen</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search teacher..." />
+        <Search placeholder="Hospitationen durchsuchen ..." />
       </div>
-      <HospitationTable/>
+      <Suspense fallback={<HospitationTableSkeleton />}>
+        <HospitationTable/>
+      </Suspense>
+      
     </div>
   )
 }
