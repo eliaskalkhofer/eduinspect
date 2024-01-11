@@ -42,6 +42,9 @@ export default async function HospitationTable() {
                       {hospitation.information}
                     </p>
                   </div>
+                  <div className="">
+                    <AcceptHospitation id={String(hospitation._id)} />
+                  </div>
                 </div>
               </div>
             ))}
