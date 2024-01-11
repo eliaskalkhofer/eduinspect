@@ -4,6 +4,9 @@ import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { getUser } from './app/lib/actions/dbActions';
 import bcrypt from 'bcrypt';
+import { cookies } from "next/headers";
+import { getIronSession } from "iron-session";
+import { sessionOptions, SessionData } from "@/app/lib/session/sessionoptions";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -24,13 +27,15 @@ export const { auth, signIn, signOut } = NextAuth({
           }
           const passwordsMatch = await bcrypt.compare(password, user.password);
 
-          if (user && passwordsMatch) {
-            // Speichern des Benutzernamens in der Session
-            //const session = { id: 123, username: 'example_user' };
-            const session = { id: user.id, username: user.username };
-            console.log('Session Object:', session);
-            return Promise.resolve(session);
-          }
+          if (passwordsMatch) {
+            const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+            session.id = user.id;
+            session.isLoggedIn = true;
+            session.username = user.username;
+            console.log('auth.ts---Session Object:', session);
+            await session.save();
+            return session;
+          }    
         }
         console.log('Invalid credentials');
         return Promise.resolve(null);
