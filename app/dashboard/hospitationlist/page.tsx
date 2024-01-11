@@ -1,8 +1,7 @@
 import { lusitana } from '@/app/ui/fonts';
 import { getSessionUsername } from "@/app/lib/session/sessionactions";
 
-export default Page;
-export async function Page() {
+export default async function Page() {
 
   const username = await getSessionUsername();
   console.log("hospitationlist---username: " + username);
