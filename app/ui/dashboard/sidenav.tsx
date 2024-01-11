@@ -2,7 +2,6 @@ import Link from "next/link";
 import NavLinks from "@/app/ui/dashboard/nav-links";
 import EduinspectLogo from '@/app/ui/eduinspect-logo';
 import { PowerIcon } from "@heroicons/react/24/outline";
-import { AcademicCapIcon } from "@heroicons/react/24/solid";
 import { signOut } from '@/auth';
 
 export default function SideNav() {
