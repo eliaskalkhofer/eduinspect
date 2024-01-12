@@ -1,6 +1,6 @@
-import {Teacher, Hospitation} from './definitions';
+import { Teacher, Hospitation } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
-import { mongoFind} from '@/app/lib/actions/dbFind'
+import { mongoFind } from '@/app/lib/actions/dbFind'
 import { sql } from '@vercel/postgres';
 import { formatCurrency } from './utils';
 import {
@@ -20,7 +20,7 @@ export async function fetchAvailableHospitations() {
 
   try {
     const availableHospitations = await mongoFind("hospitations", '{"status":"verfügbar"}');
-    
+
     //Print the id of a example
     /*
     if(availableHospitations) {
@@ -30,46 +30,39 @@ export async function fetchAvailableHospitations() {
     */
 
     return availableHospitations;
-  } 
+  }
   catch (error) {
     console.error('data---Database Error:', error);
     throw new Error('data---Failed to fetch revenue data.');
   }
 }
 
-const ITEMS_PER_PAGE = 10;
-export async function fetchFilteredInvoices(
-  query: string,
-  currentPage: number,
-) {
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+export async function fetchAssignedHospitations(implementingTeacher: String) {
+  // Add noStore() here to prevent the response from being cached.
+  // This is equivalent to in fetch(..., {cache: 'no-store'}).
+  noStore();
 
   try {
+    const status = "vergeben";
+    const query = {
+      "status": status,
+      "implementingTeacher": implementingTeacher
+    };
 
-    const invoices = await sql<InvoicesTable>`
-      SELECT
-        invoices.id,
-        invoices.amount,
-        invoices.date,
-        invoices.status,
-        customers.name,
-        customers.email,
-        customers.image_url
-      FROM invoices
-      JOIN customers ON invoices.customer_id = customers.id
-      WHERE
-        customers.name ILIKE ${`%${query}%`} OR
-        customers.email ILIKE ${`%${query}%`} OR
-        invoices.amount::text ILIKE ${`%${query}%`} OR
-        invoices.date::text ILIKE ${`%${query}%`} OR
-        invoices.status ILIKE ${`%${query}%`}
-      ORDER BY invoices.date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
-    `;
+    console.log("data---Query: " + JSON.stringify(query));
+    const assignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
 
-    return invoices.rows;
+    // Überprüfen, ob assignedHospitations definiert ist und mindestens ein Element enthält
+    if (assignedHospitations && assignedHospitations.length > 0) {
+      const hosp = assignedHospitations[0];
+      console.log("data---ID: " + hosp.teacherUsername);
+      return assignedHospitations;
+    } else {
+      console.log("data---Keine zugeordneten Hospitationen gefunden.");
+      return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
+    }
   } catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch invoices.');
+    console.error('data---Datenbankfehler:', error);
+    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }

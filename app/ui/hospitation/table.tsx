@@ -1,8 +1,11 @@
 import { fetchAvailableHospitations } from '@/app/lib/data';
 import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 import { getSessionUsername } from '@/app/lib/session/sessionactions';
+import { revalidatePath } from 'next/cache';
 
 export default async function HospitationTable() {
+
+  revalidatePath('/dashboard/hospitationlist');
 
   const hospitations = await fetchAvailableHospitations();
   var username = "";

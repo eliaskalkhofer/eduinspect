@@ -1,12 +1,10 @@
 'use client';
 import { useState } from 'react';
-// import { Link } from 'next/link';
 import { assginHospitation } from '@/app/lib/actions/dbActions';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
-export function AcceptHospitation({ id }: { id: string }) {
-  const setStatusAssigned = assginHospitation.bind(null, id);
-  const [isHovered, setIsHovered] = useState(false);
+export function AcceptHospitation({ id, username }: { id: string, username: string }) {
+  const setStatusAssigned = assginHospitation.bind(null, id, username);
 
   return (
     <form action={setStatusAssigned}>

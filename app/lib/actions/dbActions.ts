@@ -3,6 +3,7 @@ import { mongoFind } from "./dbFind";
 import type { User } from '@/app/lib/definitions';
 import { Document, ObjectId } from 'mongodb';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import {
     connectToDatabase,
     closeDatabaseConnection,
@@ -45,8 +46,7 @@ export async function getUser(username: string): Promise<User | undefined> {
     }
 }
 
-export async function assginHospitation(id: string) {
-
+export async function assginHospitation(id: string, implementingTeacherVar: string) {
     try {
         await connectToDatabase();
         //console.log("dbActions---Clientverbindung erfolgreich aufgebaut");
@@ -58,25 +58,20 @@ export async function assginHospitation(id: string) {
         //console.log("dbActions---id: " + id);
         const objectId = new ObjectId(id);
 
-        const result = await collectionObj.updateOne(
+        await collectionObj.updateOne(
             { _id: objectId },
-            { $set: { status: 'vergeben' } }
+            { $set: { status: 'vergeben', implementingTeacher: implementingTeacherVar } }
         );
 
-        if (result.modifiedCount === 1) {
-            console.log('dbActions---Status erfolgreich auf "vergeben" geändert');
-            revalidatePath('/dashboard/invoices');
-        } else {
-            console.log('dbActions---Objekt mit der angegebenen ID nicht gefunden oder der Status wurde nicht geändert');
-        }
-    }
-    catch (err) {
+    } catch (err) {
         console.log("dbActions---Fehler: " + err);
-    }
-    finally {
+    } finally {
         //console.log("dbActions---Finally");
         await closeDatabaseConnection();
         //console.log("dbActions---Clientverbindung erfolgreich geschlossen");
+        await revalidatePath('/dashboard/hospitation');
+        await revalidatePath('/dashboard/hospitationlist');
+        redirect('/dashboard/hospitationlist');
     }
 }
 
