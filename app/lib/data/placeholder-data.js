@@ -108,7 +108,7 @@ const hospitations = [
 	starttime: "07:50",
 	endtime: "08:40",
 	subject: "AM",
-	information: "Statistik",
+	information: "Kombinatorik",
 	status: "verfügbar"
 },
 {

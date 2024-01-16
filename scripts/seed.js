@@ -1,4 +1,4 @@
-const { users, hospitations } = require('../app/lib/placeholder-data.js');
+const { users, hospitations } = require('../app/lib/data/placeholder-data.js');
 const bcrypt = require('bcrypt');
 const { MongoClient } = require('mongodb');;
 

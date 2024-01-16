@@ -1,4 +1,4 @@
-import { fetchAvailableHospitations } from '@/app/lib/data';
+import { fetchAvailableHospitations } from '@/app/lib/data/datafetching';
 import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 import { getSessionUsername } from '@/app/lib/session/sessionactions';
 import { revalidatePath } from 'next/cache';

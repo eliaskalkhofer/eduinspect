@@ -1,19 +1,24 @@
 'use server';
-import { useRouter } from 'next/navigation';
-import { NextResponse } from 'next/server';
+import DatabaseClient from '@/app/lib/mongodb/client';
 
-import {
-  fetchAvailableHospitations
-} from '@/app/lib/data'
-import { redirect } from 'next/navigation';
+export async function testfunction() {
 
-  export async function testfunction() {
-  
-    console.log("testaction");
-    try {
-      console.log("Redirecting ...");
-    } 
-    catch (error) {
-      console.error('testactions---', error);
-    }
+  const client = new DatabaseClient();
+
+  console.log("Testaction called by Button");
+  try {
+    console.log("Try ...");
+    await client.connectToDatabase();
+
+    const result = await client.find("users", {"username": "WINJ"});
+    console.log("testactions---Result: " + JSON.stringify(result));
+
   }
+  catch (error) {
+    console.error('Catch---', error);
+  }
+  finally {
+    console.log("Finally...");
+    client.closeDatabaseConnection();
+  }
+}

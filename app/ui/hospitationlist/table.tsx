@@ -1,4 +1,4 @@
-import { fetchAssignedHospitations } from '@/app/lib/data';
+import { fetchAssignedHospitations } from '@/app/lib/data/datafetching';
 import { getSessionUsername } from "@/app/lib/session/sessionactions";
 import { revalidatePath } from 'next/cache';
 

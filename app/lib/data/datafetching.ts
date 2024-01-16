@@ -1,33 +1,18 @@
-import { Teacher, Hospitation } from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
-import { mongoFind } from '@/app/lib/actions/dbFind'
-import { sql } from '@vercel/postgres';
-import { formatCurrency } from './utils';
-import {
-  CustomerField,
-  CustomersTableType,
-  InvoiceForm,
-  InvoicesTable,
-  LatestInvoiceRaw,
-  User,
-  Revenue,
-} from './definitions';
+import { mongoFind } from '@/app/lib/mongodb/dbFind'
+
 
 export async function fetchAvailableHospitations() {
-  // Add noStore() here prevent the response from being cached.
-  // This is equivalent to in fetch(..., {cache: 'no-store'}).
   noStore();
 
   try {
     const availableHospitations = await mongoFind("hospitations", '{"status":"verfügbar"}');
 
     //Print the id of a example
-    /*
-    if(availableHospitations) {
+    /*if(availableHospitations) {
       const hosp = availableHospitations[0];
       console.log("data---ID: " + hosp._id)
-    }    
-    */
+    }    */
 
     return availableHospitations;
   }
@@ -38,8 +23,6 @@ export async function fetchAvailableHospitations() {
 }
 
 export async function fetchAssignedHospitations(implementingTeacher: String) {
-  // Add noStore() here to prevent the response from being cached.
-  // This is equivalent to in fetch(..., {cache: 'no-store'}).
   noStore();
 
   try {
