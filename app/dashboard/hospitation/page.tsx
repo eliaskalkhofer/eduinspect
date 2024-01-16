@@ -4,8 +4,11 @@ import Search from '@/app/ui/hospitation/search';
 import { Suspense } from 'react';
 import { HospitationTableSkeleton } from '@/app/ui/skeletons';
 
+
+
 export default function Page() {
 
+  console.log("***************************************Hospitation***************************************");
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">

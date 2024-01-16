@@ -15,8 +15,8 @@ export const mongoFind = async (collection: string, query: string) => {
         await client.connect();
         console.log('dbFind---Clientverbindung erfolgreich aufgebaut');
 
-        const databaseObj = client.db(db);
-        const collectionObj = databaseObj.collection(collection);
+        const databaseObj = await client.db(db);
+        const collectionObj = await databaseObj.collection(collection);
 
         const queryParsed = JSON.parse(query);
         

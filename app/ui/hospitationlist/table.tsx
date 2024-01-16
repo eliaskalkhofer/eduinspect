@@ -1,10 +1,11 @@
 import { fetchAssignedHospitations } from '@/app/lib/data';
 import { getSessionUsername } from "@/app/lib/session/sessionactions";
+import { revalidatePath } from 'next/cache';
 
 export default async function HospitationTable() {
   
+  console.log("***************************************Hospitationlist table***************************************");
   const username = await getSessionUsername();
-  console.log("hospitationlist---username: " + username);
   var implementingTeacher: String;
   var hospitations;
 

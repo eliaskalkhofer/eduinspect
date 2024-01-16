@@ -7,6 +7,7 @@ import {
   PencilSquareIcon,
   PlusIcon,
   ListBulletIcon,
+  EyeIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,6 +22,7 @@ const links = [
   { name: "Einheit anbieten", href: "/dashboard/offerlesson", icon: PlusIcon },
   { name: "Eingang", href: "/dashboard/inbox", icon: InboxIcon },
   { name: "Feedback", href: "/dashboard/feedback", icon: PencilSquareIcon },
+  { name: "Test", href: "/dashboard/test", icon: EyeIcon },
 ];
 
 export default function NavLinks() {

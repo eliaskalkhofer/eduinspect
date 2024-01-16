@@ -3,9 +3,12 @@ import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 import { getSessionUsername } from '@/app/lib/session/sessionactions';
 import { revalidatePath } from 'next/cache';
 
+
+
 export default async function HospitationTable() {
 
-  revalidatePath('/dashboard/hospitationlist');
+  console.log("***************************************Hospitation table***************************************");
+
 
   const hospitations = await fetchAvailableHospitations();
   var username = "";

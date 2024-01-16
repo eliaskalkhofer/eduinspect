@@ -62,16 +62,18 @@ export async function assginHospitation(id: string, implementingTeacherVar: stri
             { _id: objectId },
             { $set: { status: 'vergeben', implementingTeacher: implementingTeacherVar } }
         );
-
+        
     } catch (err) {
         console.log("dbActions---Fehler: " + err);
     } finally {
         //console.log("dbActions---Finally");
         await closeDatabaseConnection();
         //console.log("dbActions---Clientverbindung erfolgreich geschlossen");
-        await revalidatePath('/dashboard/hospitation');
-        await revalidatePath('/dashboard/hospitationlist');
-        redirect('/dashboard/hospitationlist');
+        //await revalidatePath('/dashboard/hospitation');
+        //await revalidatePath('/dashboard/hospitationlist');
+    
     }
+    console.log("Redirect...")
+    //redirect('/dashboard/hospitationlist');
 }
 
