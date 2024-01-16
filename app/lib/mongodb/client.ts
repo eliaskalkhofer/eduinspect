@@ -39,7 +39,7 @@ class DatabaseClient {
         }
     }
 
-    getDatabaseFromClient(): Db {
+    getDatabase(): Db {
         if (!this.database) {
             throw new Error('Database is not connected. Call connectToDatabase() first.');
         }
@@ -47,7 +47,7 @@ class DatabaseClient {
     }
 
     getCollection(collectionName: string): Collection<Document> {
-        const database = this.getDatabaseFromClient();
+        const database = this.getDatabase();
         return database.collection(collectionName);
     }
 

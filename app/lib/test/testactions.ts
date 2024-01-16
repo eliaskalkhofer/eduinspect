@@ -8,10 +8,18 @@ export async function testfunction() {
   console.log("Testaction called by Button");
   try {
     console.log("Try ...");
+
     await client.connectToDatabase();
 
-    const result = await client.find("users", {"username": "WINJ"});
-    console.log("testactions---Result: " + JSON.stringify(result));
+    const database1 = client.getDatabase();
+    const collection1 = database1.collection("users");
+    const result1 = await collection1.find({"username": "WINJ"});
+
+    const collection2 = client.getCollection("users");
+    const result2 = await collection2.find({"username": "WINJ"});
+
+    
+    //console.log("testactions---Result: " + JSON.stringify(result));
 
   }
   catch (error) {
@@ -19,6 +27,6 @@ export async function testfunction() {
   }
   finally {
     console.log("Finally...");
-    client.closeDatabaseConnection();
+    await client.closeDatabaseConnection();
   }
 }
