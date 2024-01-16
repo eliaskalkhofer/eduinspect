@@ -1,16 +1,23 @@
-import { fetchAvailableHospitations } from '@/app/lib/data/datafetching';
+import { fetchAvailableHospitations, fetchFilteredAvailableHospitations } from '@/app/lib/data/datafetching';
 import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 import { getSessionUsername } from '@/app/lib/session/sessionactions';
 import { revalidatePath } from 'next/cache';
 
 
 
-export default async function HospitationTable() {
+export default async function HospitationTable({
+  query,
+  currentPage,
+}: {
+  query: string;
+  currentPage: number;
+}) {
 
   console.log("***************************************Hospitation table***************************************");
 
 
-  const hospitations = await fetchAvailableHospitations();
+  const hospitations = await fetchFilteredAvailableHospitations(query, currentPage);
+
   var username = "";
   const tryUsername = await getSessionUsername();
   if(tryUsername) {

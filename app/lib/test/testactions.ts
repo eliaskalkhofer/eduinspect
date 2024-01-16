@@ -1,5 +1,6 @@
 'use server';
 import DatabaseClient from '@/app/lib/mongodb/client';
+import { fetchAvailableHospitationsPages } from '@/app/lib/data/datafetching';
 
 export async function testfunction() {
 
@@ -9,18 +10,8 @@ export async function testfunction() {
   try {
     console.log("Try ...");
 
-    await client.connectToDatabase();
-
-    const database1 = client.getDatabase();
-    const collection1 = database1.collection("users");
-    const result1 = await collection1.find({"username": "WINJ"});
-
-    const collection2 = client.getCollection("users");
-    const result2 = await collection2.find({"username": "WINJ"});
-
-    
-    //console.log("testactions---Result: " + JSON.stringify(result));
-
+    const test = await fetchAvailableHospitationsPages("");
+    console.log("testactions---Pages: " + test);
   }
   catch (error) {
     console.error('Catch---', error);

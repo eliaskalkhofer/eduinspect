@@ -1,12 +1,27 @@
 import { lusitana } from '@/app/ui/fonts';
 import HospitationTable from '@/app/ui/hospitation/table';
 import Search from '@/app/ui/hospitation/search';
+import Pagination from '@/app/ui/hospitation/pagination';
 import { Suspense } from 'react';
 import { HospitationTableSkeleton } from '@/app/ui/skeletons';
+import { fetchAvailableHospitationsPages } from '@/app/lib/data/datafetching';
 
 
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const totalPages = await fetchAvailableHospitationsPages(query);
+
 
   console.log("***************************************Hospitation***************************************");
   return (
@@ -18,9 +33,11 @@ export default function Page() {
         <Search placeholder="Hospitationen durchsuchen ..." />
       </div>
       <Suspense fallback={<HospitationTableSkeleton />}>
-        <HospitationTable/>
+        <HospitationTable query={query} currentPage={currentPage} />
       </Suspense>
-      
+      <div className="mt-5 flex w-full justify-center">
+        {<Pagination totalPages={totalPages} />}
+      </div>
     </div>
   )
 }
