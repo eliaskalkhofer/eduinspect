@@ -1,19 +1,18 @@
 "use server"
 import { ObjectId } from 'mongodb';
 import {connectToDatabase,closeDatabaseConnection,getDatabaseClient} from '@/app/lib/mongodb/clientbasic';
+import { revalidatePath } from 'next/cache';
 
 const db = process.env.MONGODB_DB;
 
 export async function assginHospitation(id: string, implementingTeacherPar: string) {
     try {
         await connectToDatabase();
-        //console.log("dbActions---Clientverbindung erfolgreich aufgebaut");
-
+       
         const databaseClient = getDatabaseClient();
         const databaseObj = databaseClient.db(db);
         const collectionObj = databaseObj.collection("hospitations");
 
-        //console.log("dbActions---id: " + id);
         const objectId = new ObjectId(id);
 
         await collectionObj.updateOne(
@@ -24,14 +23,9 @@ export async function assginHospitation(id: string, implementingTeacherPar: stri
     } catch (err) {
         console.log("dbActions---Fehler: " + err);
     } finally {
-        //console.log("dbActions---Finally");
         await closeDatabaseConnection();
-        //console.log("dbActions---Clientverbindung erfolgreich geschlossen");
-        //await revalidatePath('/dashboard/hospitation');
-        //await revalidatePath('/dashboard/hospitationlist');
-    
+        revalidatePath('/dashboard/hospitation');
     }
     console.log("Redirect...")
-    //redirect('/dashboard/hospitationlist');
 }
 

@@ -1,18 +1,17 @@
 import { fetchAssignedHospitations } from '@/app/lib/data/datafetching';
 import { getSessionUsername } from "@/app/lib/session/sessionactions";
-import { revalidatePath } from 'next/cache';
 
 export default async function HospitationTable() {
   
   console.log("***************************************Hospitationlist table***************************************");
   const username = await getSessionUsername();
-  var implementingTeacher: String;
+  var impteacherUsername: String;
   var hospitations;
 
   if(username) {
-    implementingTeacher = username;
-    console.log("hospitationlist---implementingTeacher: " + implementingTeacher);
-    hospitations = await fetchAssignedHospitations(implementingTeacher);
+    impteacherUsername = username;
+    console.log("hospitationlist---implementingTeacher: " + impteacherUsername);
+    hospitations = await fetchAssignedHospitations(impteacherUsername);
     if(hospitations && hospitations.length > 0) {
       console.log("hospitationlist---Hospitationen angekommen");
     }

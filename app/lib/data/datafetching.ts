@@ -77,14 +77,14 @@ export async function fetchFilteredAvailableHospitations(
   }
 }
 
-export async function fetchAssignedHospitations(implementingTeacher: String) {
+export async function fetchAssignedHospitations(impteacherUsername: String) {
   noStore();
 
   try {
     const status = "vergeben";
     const query = {
       "status": status,
-      "implementingTeacher": implementingTeacher
+      "impteacherUsername": impteacherUsername
     };
 
     console.log("data---Query: " + JSON.stringify(query));
