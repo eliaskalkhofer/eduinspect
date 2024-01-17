@@ -4,7 +4,7 @@ import {connectToDatabase,closeDatabaseConnection,getDatabaseClient} from '@/app
 
 const db = process.env.MONGODB_DB;
 
-export async function assginHospitation(id: string, implementingTeacherVar: string) {
+export async function assginHospitation(id: string, implementingTeacherPar: string) {
     try {
         await connectToDatabase();
         //console.log("dbActions---Clientverbindung erfolgreich aufgebaut");
@@ -18,7 +18,7 @@ export async function assginHospitation(id: string, implementingTeacherVar: stri
 
         await collectionObj.updateOne(
             { _id: objectId },
-            { $set: { status: 'vergeben', implementingTeacher: implementingTeacherVar } }
+            { $set: { status: 'vergeben', impteacherUsername: implementingTeacherPar } }
         );
         
     } catch (err) {

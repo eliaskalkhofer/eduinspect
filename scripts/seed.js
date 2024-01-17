@@ -47,13 +47,20 @@ async function seedHospitations(client) {
                     teacherUsername: hospitation.teacherUsername,
                     teacherFirstname: hospitation.teacherFirstname,
                     teacherLastname: hospitation.teacherLastname,
-                    implementingTeacher : hospitation.implementingTeacher,
+
+                    impteacherUsername: hospitation.impteacherUsername,
+                    impteacherFirstname: hospitation.impteacherFirstname,
+                    impteacherLastname: hospitation.impteacherLastname,
+
                     date: hospitation.date,
                     starttime: hospitation.starttime,
                     endtime: hospitation.endtime,
+
+                    room: hospitation.room,
                     subject: hospitation.subject,
                     information: hospitation.information,
-                    status: hospitation.status
+                    status: hospitation.status,
+                    feedback: hospitation.feedback
                 });
             }),
         );
