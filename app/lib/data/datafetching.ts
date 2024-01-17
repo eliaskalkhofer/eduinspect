@@ -21,8 +21,8 @@ export async function fetchAvailableHospitations() {
     return availableHospitations;
   }
   catch (error) {
-    console.error('data---Database Error:', error);
-    throw new Error('data---Failed to fetch revenue data.');
+    console.error('data---Database Fehler:', error);
+    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }
 
@@ -147,6 +147,20 @@ export async function fetchAvailableHospitationsPages(query: string) {
   }
   finally {
     await client.closeDatabaseConnection();
-    console.log('datafetching---Finally---Verbindung geschlossen')
+    console.log('datafetching---Verbindung geschlossen')
+  }
+}
+
+export async function fetchOwnHospitations(usersname: string) {
+  noStore();
+
+  try {
+    const user = {"teacherUsername": usersname};
+    const ownHospitations = await mongoFind("hospitations", JSON.stringify(user));
+    return ownHospitations;
+  }
+  catch (error) {
+    console.error('data---Database Error:', error);
+    throw new Error('data---Failed to fetch revenue data.');
   }
 }
