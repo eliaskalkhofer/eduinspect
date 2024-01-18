@@ -29,7 +29,6 @@ export const { auth, signIn, signOut } = NextAuth({
 
           if (passwordsMatch) {
             const session = await getIronSession<SessionData>(cookies(), sessionOptions);
-            session.id = user.id;
             session.isLoggedIn = true;
             session.username = user.username;
             console.log('auth.ts---Session Object:', session);
