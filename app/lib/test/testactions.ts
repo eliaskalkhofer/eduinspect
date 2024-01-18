@@ -1,23 +1,18 @@
 'use server';
-import DatabaseClient from '@/app/lib/mongodb/client';
-import { fetchAvailableHospitationsPages } from '@/app/lib/data/datafetching';
+import { Hospitation } from '@/app/lib/data/definitions';
+import { createHospitation } from '@/app/lib/actions/dbActions';
 
 export async function testfunction() {
-
-  const client = new DatabaseClient();
 
   console.log("Testaction called by Button");
   try {
     console.log("Try ...");
 
-    const test = await fetchAvailableHospitationsPages("");
-    console.log("testactions---Pages: " + test);
   }
   catch (error) {
-    console.error('Catch---', error);
+    console.error('testactions---Fehler: ', error);
   }
   finally {
-    console.log("Finally...");
-    await client.closeDatabaseConnection();
+    console.log("testactions---Finally");
   }
 }

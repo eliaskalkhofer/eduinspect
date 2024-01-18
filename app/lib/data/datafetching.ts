@@ -164,3 +164,22 @@ export async function fetchOwnHospitations(usersname: string) {
     throw new Error('data---Failed to fetch revenue data.');
   }
 }
+
+export async function fetchUser(usersname: string) {
+  noStore();
+
+  try {
+    const usernameObj = JSON.stringify({"username": usersname});
+    const users = await mongoFind("users", usernameObj);
+
+    if (users && users.length > 0) {
+      return users[0];
+  }
+    return undefined;
+  }
+  catch (error) {
+    console.error('data---Database Error:', error);
+    throw new Error('data---Failed to fetch revenue data.');
+  }
+}
+

@@ -7,14 +7,24 @@ import {
     MegaphoneIcon
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
-//import { createInvoice } from '@/app/lib/actions';
+import { getSessionUsername } from "@/app/lib/session/sessionactions";
+import { fetchUser } from '@/app/lib/data/datafetching';
+import { createHospitation } from '@/app/lib/actions/dbActions';
+import { User } from '@/app/lib/data/definitions';
 
-//<form action={createInvoice}> einfügen
 
-export default function Form() {
+export default async function Form() {
+
+    const username = await getSessionUsername();
+    var createHospitationCons;
+    console.log("create-form---Username: " + username);
+    if (username) {
+        createHospitationCons = createHospitation.bind(null, username);
+    }
+
 
     return (
-        <form>
+        <form action={createHospitationCons}>
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
                 {/* Datum */}
                 <div className="mb-4">
@@ -54,14 +64,14 @@ export default function Form() {
                 </div>
                 {/* Endzeit */}
                 <div className="mb-4">
-                    <label htmlFor="duration" className="mb-2 block text-sm font-medium">
+                    <label htmlFor="endtime" className="mb-2 block text-sm font-medium">
                         Wähle eine Endzeit
                     </label>
                     <div className="relative mt-2 rounded-md">
                         <div className="relative">
                             <input
-                                id="duration"
-                                name="duration"
+                                id="endtime"
+                                name="endtime"
                                 type="string"
                                 placeholder="hh:mm"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"

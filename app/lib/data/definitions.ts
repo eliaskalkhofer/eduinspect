@@ -1,14 +1,14 @@
 export type Hospitation = {
 
-  id: string;
+  id?: string;
 
   teacherUsername: string;
   teacherFirstname: string;
   teacherLastname: string;
 
-  impteacherUsername: string;
-  impteacherFirstname: string;
-  impteacherLastname: string;
+  impteacherUsername?: string;
+  impteacherFirstname?: string;
+  impteacherLastname?: string;
 
   date: string;
   starttime: string;
@@ -18,11 +18,11 @@ export type Hospitation = {
   subject: string;
   information: string;
   status: string;
-  feedback: string;
+  feedback?: string;
 }
 
 export type User = {
-  id: string;
+  id?: string;
   username: string;
   firstname: string;
   lastname: string;
