@@ -1,7 +1,6 @@
 import { fetchOwnHospitations } from '@/app/lib/data/datafetching';
-import { AcceptHospitation } from '@/app/ui/hospitation/buttons';
 import { getSessionUsername } from '@/app/lib/session/sessionactions';
-import { UpdateLesson } from '@/app/ui/offerlesson/buttons';
+import { UpdateHospitation, DeleteHospitation } from '@/app/ui/offerlesson/buttons';
 
 export default async function HospitationTable() {
 
@@ -92,7 +91,8 @@ export default async function HospitationTable() {
                                     <td className="whitespace-nowrap px-5 py-5 hidden lg:block">{hospitation.status}</td>
                                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                         <div className="flex justify-end gap-3">
-                                            <UpdateLesson id={hospitation.id} />
+                                            <UpdateHospitation id={String(hospitation._id)} />
+                                            <DeleteHospitation id={String(hospitation._id)} />
                                         </div>
                                     </td>
                                 </tr>

@@ -77,34 +77,6 @@ export async function fetchFilteredAvailableHospitations(
   }
 }
 
-export async function fetchAssignedHospitations(impteacherUsername: String) {
-  noStore();
-
-  try {
-    const status = "vergeben";
-    const query = {
-      "status": status,
-      "impteacherUsername": impteacherUsername
-    };
-
-    console.log("data---Query: " + JSON.stringify(query));
-    const assignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
-
-    // Überprüfen, ob assignedHospitations definiert ist und mindestens ein Element enthält
-    if (assignedHospitations && assignedHospitations.length > 0) {
-      const hosp = assignedHospitations[0];
-      console.log("data---ID: " + hosp.teacherUsername);
-      return assignedHospitations;
-    } else {
-      console.log("data---Keine zugeordneten Hospitationen gefunden.");
-      return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
-    }
-  } catch (error) {
-    console.error('data---Datenbankfehler:', error);
-    throw new Error('data---Daten fetching fehlgeschlagen!');
-  }
-}
-
 export async function fetchAvailableHospitationsPages(query: string) {
 
   noStore();
@@ -148,6 +120,34 @@ export async function fetchAvailableHospitationsPages(query: string) {
   finally {
     await client.closeDatabaseConnection();
     console.log('datafetching---Verbindung geschlossen')
+  }
+}
+
+export async function fetchAssignedHospitations(impteacherUsername: String) {
+  noStore();
+
+  try {
+    const status = "vergeben";
+    const query = {
+      "status": status,
+      "impteacherUsername": impteacherUsername
+    };
+
+    console.log("data---Query: " + JSON.stringify(query));
+    const assignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
+
+    // Überprüfen, ob assignedHospitations definiert ist und mindestens ein Element enthält
+    if (assignedHospitations && assignedHospitations.length > 0) {
+      const hosp = assignedHospitations[0];
+      console.log("data---ID: " + hosp.teacherUsername);
+      return assignedHospitations;
+    } else {
+      console.log("data---Keine zugeordneten Hospitationen gefunden.");
+      return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
+    }
+  } catch (error) {
+    console.error('data---Datenbankfehler:', error);
+    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }
 

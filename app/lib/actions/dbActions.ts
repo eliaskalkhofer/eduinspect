@@ -95,3 +95,27 @@ export async function assginHospitation(id: string, implementingTeacherPar: stri
     }
     console.log("Redirect...")
 }
+
+export async function deleteHospitation(id: string) {
+    
+    try {
+        await connectToDatabase();
+
+        const databaseClient = getDatabaseClient();
+        const databaseObj = databaseClient.db(db);
+        const collectionObj = databaseObj.collection("hospitations");
+
+        const objectId = new ObjectId(id);
+        await collectionObj.deleteOne({"_id" : objectId});
+        console.log("dbactions---Hospitation mit id: " + id + " gelöscht");
+        revalidatePath('/dashboard/offerlesson');
+
+        return { message: 'Hospitation gelöscht' };
+    }
+    catch (error) {
+        return { message: 'Datenbank Fehler: Hospitation löschen fehlgeschlagen' };
+    } 
+    finally {
+        await closeDatabaseConnection();
+    }
+}

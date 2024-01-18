@@ -1,7 +1,7 @@
 'use client';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-//import { deleteInvoice } from '@/app/lib/actions';
+import { deleteHospitation } from '@/app/lib/actions/dbActions';
 
 export function CreateLesson() {
     return (
@@ -15,7 +15,7 @@ export function CreateLesson() {
     );
   }
 
-export function UpdateLesson({ id }: { id: string }) {
+export function UpdateHospitation({ id }: { id: string }) {
   return (
     <Link
       href={`/dashboard/offerlesson/${id}/edit`}
@@ -26,12 +26,14 @@ export function UpdateLesson({ id }: { id: string }) {
   );
 }
 
-/*
-export function DeleteInvoice({ id }: { id: string }) {
-  const deleteInvoiceWithId = deleteInvoice.bind(null, id);
-  console.log(id);
+
+export function DeleteHospitation({ id }: { id: string }) {
+
+  const deleteHospitationWithId = deleteHospitation.bind(null, id);
+  console.log("buttons---Lösche Hospitation mit id: " + id);
+
   return (
-    <form action={deleteInvoiceWithId}>
+    <form action={deleteHospitationWithId}>
       <button className="rounded-md border p-2 hover:bg-gray-100">
         <span className="sr-only">Delete</span>
         <TrashIcon className="w-4" />
@@ -39,4 +41,3 @@ export function DeleteInvoice({ id }: { id: string }) {
     </form>
   );
 }
-*/
