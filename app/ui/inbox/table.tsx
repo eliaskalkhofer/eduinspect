@@ -13,47 +13,20 @@ export default async function HospitationTable() {
         }
     }
 
+    if(hospitations) {
+        const test = hospitations[0];
+        console.log("inbox---table---hospitations: " + JSON.stringify(test));
+    }
+  
+
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
 
-                        {hospitations?.map((hospitation) => (
-                            <div
-                                key={String(hospitation._id)}
-                                className="mb-2 w-full rounded-md bg-white p-4"
-                            >
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.teacherFirstname}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.teacherLastname}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.date}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.starttime}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.endtime}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.subject}
-                                        </p>
-                                        <p className="text-xl font-medium">
-                                            {hospitation.information}
-                                        </p>
-                                    </div>
-                                    <div className="">
-                                        Button comming soon
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                     
 
                     </div>
                     <table className="hidden min-w-full text-gray-900 md:table">

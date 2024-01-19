@@ -1,31 +1,31 @@
 const users = [
 	{
 		username: 'WINJ',
-		firsname: 'Josef',
+		firstname: 'Josef',
 		lastname: 'Winkler',
 		password: '123456'
 	},
 	{
 		username: 'KRAM',
-		firsname: 'Thomas',
+		firstname: 'Thomas',
 		lastname: 'Krammer',
 		password: '123456'
 	},
 	{
 		username: 'FELT',
-		firsname: 'Tobias',
+		firstname: 'Tobias',
 		lastname: 'Fellner',
 		password: '123456'
 	},
 	{
 		username: 'LOEF',
-		firsname: 'Franz',
+		firstname: 'Franz',
 		lastname: 'Lösch',
 		password: '123456'
 	},
 	{
 		username: 'WIDM',
-		firsname: 'Manfred',
+		firstname: 'Manfred',
 		lastname: 'Widmann',
 		password: '123456'
 	}
@@ -265,9 +265,9 @@ const hospitations = [
 		teacherFirstname: "Josef",
 		teacherLastname: "Winkler",
 
-		impteacherUsername: null,
-		impteacherFirstname: null,
-		impteacherLastname: null,
+		impteacherUsername: "KRAM",
+		impteacherFirstname: "Thomas",
+		impteacherLastname: "Krammer",
 
 		date: "01.05.2024",
 		starttime: "07:50",
@@ -276,8 +276,8 @@ const hospitations = [
 		room: "T127",
 		subject: "INSY",
 		information: "Joomla",
-		status: "verfügbar",
-		feedback: null
+		status: "abgeschlossen",
+		feedback: "Guter Unterricht, lauter Sprechen"
 	},
 	{
 		teacherUsername: "WINJ",

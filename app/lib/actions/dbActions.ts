@@ -93,11 +93,14 @@ export async function assginHospitation(id: string, implementingTeacherPar: stri
         }
         const fetcheduser = await fetchUser(implementingTeacherPar);
         if(fetcheduser) {
+            console.log("dbActions---fetcheduser: " + JSON.stringify(fetcheduser));
             impteacher.username = fetcheduser.username;
             impteacher.firstname = fetcheduser.firstname;
             impteacher.lastname = fetcheduser.lastname;
         }
 
+        console.log("dbActions---Nachname: " + impteacher.lastname);
+        console.log("dbActions---Vorname: " + impteacher.firstname);
         await collectionObj.updateOne(
             { _id: objectId },
             { $set: { status: 'vergeben', impteacherUsername: implementingTeacherPar, impteacherFirstname: impteacher.firstname, impteacherLastname: impteacher.lastname} }

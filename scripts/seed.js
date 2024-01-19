@@ -18,7 +18,7 @@ async function seedUsers(client) {
                 const collectionObj = databaseObj.collection("users");
                 const result = await collectionObj.insertOne({
                     username: user.username,
-                    firsname: user.firsname,
+                    firstname: user.firstname,
                     lastname: user.lastname,
                     password: hashedPassword
                 });
@@ -87,7 +87,7 @@ async function main() {
         console.error('seed---Fehler beim Verbindungsaufbau zur Datenbank:', error);
     }
 
-    //await seedUsers(client);
+    await seedUsers(client);
     await seedHospitations(client);
 
     try {
