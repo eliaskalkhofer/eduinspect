@@ -9,7 +9,7 @@ export function CreateLesson() {
         href="/dashboard/offerlesson/create"
         className="flex h-10 items-center rounded-lg bg-orange-600 px-4 text-sm font-medium text-white transition-colors hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
       >
-        <span className="hidden md:block">Create Lesson</span>{' '}
+        <span className="hidden md:block">Hospitation anbieten</span>{' '}
         <PlusIcon className="h-5 md:ml-4" />
       </Link>
     );
@@ -28,9 +28,7 @@ export function UpdateHospitation({ id }: { id: string }) {
 
 
 export function DeleteHospitation({ id }: { id: string }) {
-
   const deleteHospitationWithId = deleteHospitation.bind(null, id);
-  console.log("buttons---Lösche Hospitation mit id: " + id);
 
   return (
     <form action={deleteHospitationWithId}>

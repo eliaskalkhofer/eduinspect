@@ -28,3 +28,13 @@ export type User = {
   lastname: string;
   password: string;
 };
+
+export type HospitationForm = {
+  id: string,
+  date: string;
+  starttime: string;
+  endtime: string;
+  room: string;
+  subject: string;
+  information: string;
+};

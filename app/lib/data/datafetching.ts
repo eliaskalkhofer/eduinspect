@@ -2,6 +2,7 @@
 import { unstable_noStore as noStore } from 'next/cache';
 import { mongoFind } from '@/app/lib/mongodb/dbFind';
 import DatabaseClient from '@/app/lib/mongodb/client';
+import { ObjectId } from 'mongodb';
 
 const client = new DatabaseClient();
 const ITEMS_PER_PAGE = 5;
@@ -183,3 +184,24 @@ export async function fetchUser(usersname: string) {
   }
 }
 
+export async function fetchHospitationById(id: ObjectId) {
+
+  noStore();
+
+  try {
+    await client.connectToDatabase();
+    const collection = client.getCollection("hospitations");
+
+    const hospitation = await collection.findOne({"_id" : id});
+    
+    return hospitation;
+  }
+  catch (error) {
+    console.error('datafetching---Datenbankfehler:', error);
+    throw new Error('datafetching---Daten fetching fehlgeschlagen!');
+  }
+  finally {
+    await client.closeDatabaseConnection();
+    console.log('datafetching---Verbindung geschlossen')
+  }
+}
