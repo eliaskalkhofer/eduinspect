@@ -136,11 +136,8 @@ export async function fetchAssignedHospitations(impteacherUsername: String) {
 
     console.log("data---Query: " + JSON.stringify(query));
     const assignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
-
-    // Überprüfen, ob assignedHospitations definiert ist und mindestens ein Element enthält
+    
     if (assignedHospitations && assignedHospitations.length > 0) {
-      const hosp = assignedHospitations[0];
-      console.log("data---ID: " + hosp.teacherUsername);
       return assignedHospitations;
     } else {
       console.log("data---Keine zugeordneten Hospitationen gefunden.");
@@ -163,6 +160,32 @@ export async function fetchOwnHospitations(usersname: string) {
   catch (error) {
     console.error('data---Database Error:', error);
     throw new Error('data---Failed to fetch revenue data.');
+  }
+}
+
+export async function fetchOwnAssignedHospitations(username: string) {
+  noStore();
+
+  try {
+    const status = "vergeben";
+    const query = {
+      "status": status,
+      "teacherUsername": username
+    };
+
+    console.log("data---Query: " + JSON.stringify(query));
+    const ownAssignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
+
+    if (ownAssignedHospitations && ownAssignedHospitations.length > 0) {
+      return ownAssignedHospitations;
+    } 
+    else {
+      console.log("data---Keine zugeordneten Hospitationen gefunden.");
+      return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
+    }
+  } catch (error) {
+    console.error('data---Datenbankfehler:', error);
+    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }
 

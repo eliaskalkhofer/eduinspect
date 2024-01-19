@@ -90,7 +90,7 @@ const hospitations = [
 		feedback: null
 	},
 	{
-		teacherUsername: "WIR",
+		teacherUsername: "KRAM",
 		teacherFirstname: "Thomas",
 		teacherLastname: "Krammer",
 
@@ -109,7 +109,7 @@ const hospitations = [
 		feedback: null
 	},
 	{
-		teacherUsername: "WIR",
+		teacherUsername: "KRAM",
 		teacherFirstname: "Thomas",
 		teacherLastname: "Krammer",
 
@@ -128,7 +128,7 @@ const hospitations = [
 		feedback: null
 	},
 	{
-		teacherUsername: "WIR",
+		teacherUsername: "KRAM",
 		teacherFirstname: "Thomas",
 		teacherLastname: "Krammer",
 

@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { Hospitation } from '@/app/lib/data/definitions';
 import { fetchUser } from '@/app/lib/data/datafetching';
 import { redirect } from 'next/navigation';
+import { User } from '@/app/lib/data/definitions';
 
 const db = process.env.MONGODB_DB;
 
@@ -84,10 +85,22 @@ export async function assginHospitation(id: string, implementingTeacherPar: stri
         const collectionObj = databaseObj.collection("hospitations");
 
         const objectId = new ObjectId(id);
+        var impteacher: User = {
+            username: "",
+            firstname: "",
+            lastname: "",
+            password: "",
+        }
+        const fetcheduser = await fetchUser(implementingTeacherPar);
+        if(fetcheduser) {
+            impteacher.username = fetcheduser.username;
+            impteacher.firstname = fetcheduser.firstname;
+            impteacher.lastname = fetcheduser.lastname;
+        }
 
         await collectionObj.updateOne(
             { _id: objectId },
-            { $set: { status: 'vergeben', impteacherUsername: implementingTeacherPar } }
+            { $set: { status: 'vergeben', impteacherUsername: implementingTeacherPar, impteacherFirstname: impteacher.firstname, impteacherLastname: impteacher.lastname} }
         );
 
     } catch (err) {
