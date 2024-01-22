@@ -20,7 +20,10 @@ export default async function Page({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  const totalPages = await fetchAvailableHospitationsPages(query);
+  var totalPages = await fetchAvailableHospitationsPages(query);
+  if(!totalPages) {
+    totalPages = 5;
+  }
 
 
   console.log("***************************************Hospitation***************************************");

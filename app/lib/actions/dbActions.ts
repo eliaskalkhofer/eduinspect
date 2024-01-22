@@ -22,8 +22,14 @@ const FormSchema = z.object({
     information: z.string()
 });
 
+const FormSchemaComplete = z.object({
+    id: z.string(),
+    feedback: z.string()
+});
+
 const CreateHospitation = FormSchema.omit({ id: true });
 const UpdateHospitation = FormSchema.omit({ id: true });
+const CompleteHospitation = FormSchemaComplete.omit({ id: true });
 
 export async function createHospitation(username: string, formData: FormData) {
     const { date, starttime, endtime, room, subject, information } = CreateHospitation.parse({
@@ -76,6 +82,41 @@ export async function createHospitation(username: string, formData: FormData) {
     }
 }
 
+export async function completeHospitation(id: string, formData: FormData) {
+    console.log("dbActions---completeHospitation aufgerufen")
+    const { feedback } = CompleteHospitation.parse({
+        feedback: formData.get('feedback'),
+    });
+
+    try {
+        await connectToDatabase();
+
+        const databaseClient = getDatabaseClient();
+        const databaseObj = databaseClient.db(db);
+        const collectionObj = databaseObj.collection("hospitations");
+
+        console.log("dbactions---feedback= " + feedback);
+        console.log("dbactions---id= " + id);
+        const objectId = new ObjectId(id);
+        await collectionObj.updateOne(
+            { _id: objectId },
+            { $set: { status: "abgeschlossen", feedback: feedback } }
+        );
+
+        console.log("dbactions---Hospitation mit id: " + id + " abgeschlossen");
+        revalidatePath('/dashboard/hospitationlist');
+        return { message: 'Hospitation abgeschlossen' };
+    }
+    catch (error) {
+        console.log("dbactions---Fehler: " + error);
+        return { message: 'Datenbank Fehler: Hospitation abschlie fehlgeschlagen' };
+    }
+    finally {
+        await closeDatabaseConnection();
+        redirect('/dashboard/hospitationlist');
+    }
+}
+
 export async function assginHospitation(id: string, implementingTeacherPar: string) {
     try {
         await connectToDatabase();
@@ -117,7 +158,7 @@ export async function assginHospitation(id: string, implementingTeacherPar: stri
 
 export async function updateHospitation(id: string, formData: FormData) {
     console.log("dbActions---updateHospitation aufgerufen")
-    const { date, starttime, endtime, room, subject, information } = CreateHospitation.parse({
+    const { date, starttime, endtime, room, subject, information } = UpdateHospitation.parse({
         date: formData.get('date'),
         starttime: formData.get('starttime'),
         endtime: formData.get('endtime'),

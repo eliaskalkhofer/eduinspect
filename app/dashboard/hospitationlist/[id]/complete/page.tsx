@@ -1,10 +1,11 @@
-import Form from '@/app/ui/offerlesson/edit-form';
+import Form from '@/app/ui/hospitationlist/complete-form';
 import Breadcrumbs from '@/app/ui/offerlesson/breadcrumbs';
 import { fetchHospitationById } from '@/app/lib/data/datafetching';
 import { notFound } from 'next/navigation';
 import { ObjectId } from 'mongodb';
 
 export default async function Page({ params }: { params: { id: string } }) {
+
     const id = params.id;
 
     const oid = new ObjectId(id);
@@ -15,29 +16,23 @@ export default async function Page({ params }: { params: { id: string } }) {
         notFound();
     }
 
-    const hospitationForm = {
-        id: id,
-        date: hospitation.date,
-        starttime: hospitation.starttime,
-        endtime: hospitation.endtime,
-        room: hospitation.room,
-        subject: hospitation.subject,
-        information: hospitation.information,
+    const feedbackForm = {
+        id: id
     }
 
     return (
         <main>
             <Breadcrumbs
                 breadcrumbs={[
-                    { label: 'Einheit anbieten', href: '/dashboard/offerlesson' },
+                    { label: 'Hospitationsliste', href: '/dashboard/hospitationlist' },
                     {
-                        label: 'Bearbeiten',
-                        href: `/dashboard/offerlesson/${id}/edit`,
+                        label: 'Abschließen',
+                        href: `/dashboard/hospitationlist/${id}/complete`,
                         active: true,
                     },
                 ]}
             />
-            <Form hospitation={hospitationForm} />
+            <Form id={id}/>
         </main>
     );
 }

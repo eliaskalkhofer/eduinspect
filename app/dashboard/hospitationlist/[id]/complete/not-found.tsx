@@ -9,7 +9,7 @@ export default function NotFound() {
       <h2 className="text-xl font-semibold">404 Not Found</h2>
       <p>Could not find the requested hospitation.</p>
       <Link
-        href="/dashboard/offerlesson"
+        href="/dashboard/hospitationlist"
         className="mt-4 rounded-md bg-orange-500 px-4 py-2 text-sm text-white transition-colors hover:bg-orange-400"
       >
         Go Back

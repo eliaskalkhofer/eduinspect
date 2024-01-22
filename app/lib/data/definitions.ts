@@ -38,3 +38,8 @@ export type HospitationForm = {
   subject: string;
   information: string;
 };
+
+export type FeedbackForm = {
+  id: string;
+  feedback: string;
+};
