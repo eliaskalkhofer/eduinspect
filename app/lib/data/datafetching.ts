@@ -23,7 +23,6 @@ export async function fetchAvailableHospitations() {
   }
   catch (error) {
     console.error('data---Database Fehler:', error);
-    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }
 
@@ -45,6 +44,7 @@ export async function fetchFilteredAvailableHospitations(
             { "status": "verfügbar" },
             {
               $or: [
+                { "teacherUsername": { $regex: new RegExp(query, "i") } },
                 { "teacherFirstname": { $regex: new RegExp(query, "i") } },
                 { "teacherLastname": { $regex: new RegExp(query, "i") } },
                 { "starttime": { $regex: new RegExp(query, "i") } },
@@ -70,7 +70,6 @@ export async function fetchFilteredAvailableHospitations(
   }
   catch (error) {
     console.error('datafetching---Datenbankfehler:', error);
-    throw new Error('datafetching---Daten fetching fehlgeschlagen!');
   }
   finally {
     await client.closeDatabaseConnection();
@@ -116,7 +115,6 @@ export async function fetchAvailableHospitationsPages(query: string) {
   }
   catch (error) {
     console.error('datafetching---Datenbankfehler:', error);
-    throw new Error('datafetching---Daten fetching fehlgeschlagen!');
   }
   finally {
     await client.closeDatabaseConnection();
@@ -145,7 +143,6 @@ export async function fetchAssignedHospitations(impteacherUsername: String) {
     }
   } catch (error) {
     console.error('data---Datenbankfehler:', error);
-    throw new Error('data---Daten fetching fehlgeschlagen!');
   }
 }
 
@@ -159,7 +156,6 @@ export async function fetchOwnHospitations(usersname: string) {
   }
   catch (error) {
     console.error('data---Database Error:', error);
-    throw new Error('data---Failed to fetch revenue data.');
   }
 }
 
@@ -185,7 +181,33 @@ export async function fetchOwnAssignedHospitations(username: string) {
     }
   } catch (error) {
     console.error('data---Datenbankfehler:', error);
-    throw new Error('data---Daten fetching fehlgeschlagen!');
+
+  }
+}
+
+export async function fetchOwnCompletedHospitations(username: string) {
+  noStore();
+
+  try {
+    const status = "abgeschlossen";
+    const query = {
+      "status": status,
+      "teacherUsername": username
+    };
+
+    console.log("data---Query: " + JSON.stringify(query));
+    const ownCompletedHospitations = await mongoFind("hospitations", JSON.stringify(query));
+
+    if (ownCompletedHospitations && ownCompletedHospitations.length > 0) {
+      return ownCompletedHospitations;
+    } 
+    else {
+      console.log("data---Keine zugeordneten Hospitationen gefunden.");
+      return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
+    }
+  } catch (error) {
+    console.error('data---Datenbankfehler:', error);
+
   }
 }
 
@@ -203,7 +225,6 @@ export async function fetchUser(usersname: string) {
   }
   catch (error) {
     console.error('data---Database Error:', error);
-    throw new Error('data---Failed to fetch revenue data.');
   }
 }
 
@@ -221,7 +242,6 @@ export async function fetchHospitationById(id: ObjectId) {
   }
   catch (error) {
     console.error('datafetching---Datenbankfehler:', error);
-    throw new Error('datafetching---Daten fetching fehlgeschlagen!');
   }
   finally {
     await client.closeDatabaseConnection();
