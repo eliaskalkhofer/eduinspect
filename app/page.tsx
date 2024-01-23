@@ -31,22 +31,20 @@
 // }
 
 // Importe für Next.js und React
-import Head from 'next/head';
+// import Head from 'next/head';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import FAQSection from './ui/landingpage/faq';
+
+export const metadata: Metadata = {
+  title: 'Eduinspect'
+}
 
 // React-Komponente für die Landing Page
 const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-wrap">
-      {/* Head-Element für die Seitentitel und Meta-Tags */}
-      <Head>
-        <title>Eduinspect.</title>
-        <meta name="description" content="Find your greeny stuff for your room with Plant." />
-        <link rel="icon" href="https://image.flaticon.com/icons/svg/497/497348.svg" />
-      </Head>
-
       {/* Hauptinhalt der Landing Page */}
       <div className="w-full sm:w-8/12 mb-10 mt-5">
         <div className="container mx-auto h-full sm:p-10">
