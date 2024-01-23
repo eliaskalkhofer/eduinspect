@@ -22,7 +22,7 @@ const links = [
   { name: "Einheit anbieten", href: "/dashboard/offerlesson", icon: PlusIcon },
   { name: "Eingang", href: "/dashboard/inbox", icon: InboxIcon },
   { name: "Feedback", href: "/dashboard/feedback", icon: PencilSquareIcon },
-  { name: "Test", href: "/dashboard/test", icon: EyeIcon },
+  // { name: "Test", href: "/dashboard/test", icon: EyeIcon },
 ];
 
 export default function NavLinks() {
