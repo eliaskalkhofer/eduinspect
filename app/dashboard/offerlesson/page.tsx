@@ -1,6 +1,11 @@
 import { lusitana } from '@/app/ui/fonts';
 import { CreateLesson } from '@/app/ui/offerlesson/buttons'
 import HospitationTable from '@/app/ui/offerlesson/table';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Einheit anbieten',
+}
 
 export default function Page() {
   return (

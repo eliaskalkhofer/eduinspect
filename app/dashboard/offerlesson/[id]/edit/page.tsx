@@ -3,6 +3,11 @@ import Breadcrumbs from '@/app/ui/offerlesson/breadcrumbs';
 import { fetchHospitationById } from '@/app/lib/data/datafetching';
 import { notFound } from 'next/navigation';
 import { ObjectId } from 'mongodb';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Bearbeiten',
+}
 
 export default async function Page({ params }: { params: { id: string } }) {
     const id = params.id;

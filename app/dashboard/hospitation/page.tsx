@@ -5,8 +5,11 @@ import Pagination from '@/app/ui/hospitation/pagination';
 import { Suspense } from 'react';
 import { HospitationTableSkeleton } from '@/app/ui/skeletons';
 import { fetchAvailableHospitationsPages } from '@/app/lib/data/datafetching';
+import { Metadata } from 'next';
 
-
+export const metadata: Metadata = {
+  title: 'Hospitation',
+}
 
 export default async function Page({
   searchParams,

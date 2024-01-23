@@ -43,7 +43,7 @@ export default async function HospitationTable() {
                                     Lehrerkürzel
                                 </th>
                                 <th scope="col" className="px-5 py-5 font-medium">
-                                    Feeback
+                                    Feedback
                                 </th>
                             </tr>
                         </thead>

@@ -1,5 +1,10 @@
 import { lusitana } from '@/app/ui/fonts';
 import HospitationTable from "@/app/ui/hospitationlist/table"
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hospitationsliste',
+}
 
 export default function Page() {
 
