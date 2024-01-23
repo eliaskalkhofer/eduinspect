@@ -12,13 +12,6 @@ export async function fetchAvailableHospitations() {
 
   try {
     const availableHospitations = await mongoFind("hospitations", '{"status":"verfügbar"}');
-
-    //Print the id of a example
-    /*if(availableHospitations) {
-      const hosp = availableHospitations[0];
-      console.log("data---ID: " + hosp._id)
-    }    */
-
     return availableHospitations;
   }
   catch (error) {
@@ -29,6 +22,7 @@ export async function fetchAvailableHospitations() {
 export async function fetchFilteredAvailableHospitations(
   query: string,
   currentPage: number,
+  username: string
 ) {
 
   noStore();
@@ -37,11 +31,13 @@ export async function fetchFilteredAvailableHospitations(
   try {
     await client.connectToDatabase();
     const collection = client.getCollection("hospitations");
+    console.log("********************" + username);
     const result = await collection.aggregate([
       {
         $match: {
           $and: [
             { "status": "verfügbar" },
+            { "teacherUsername": { $ne: username } },
             {
               $or: [
                 { "teacherUsername": { $regex: new RegExp(query, "i") } },
