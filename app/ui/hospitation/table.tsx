@@ -16,13 +16,15 @@ export default async function HospitationTable({
   console.log("***************************************Hospitation table***************************************");
 
 
-  const hospitations = await fetchFilteredAvailableHospitations(query, currentPage);
+  
 
   var username = "";
   const tryUsername = await getSessionUsername();
   if(tryUsername) {
     username = tryUsername;
   }
+
+  const hospitations = await fetchFilteredAvailableHospitations(query, currentPage, username);
 
   if(hospitations && hospitations.length > 0) {
     console.log("table---Hospitationen angekommen");
