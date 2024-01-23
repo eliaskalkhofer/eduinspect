@@ -130,7 +130,7 @@ export async function fetchAssignedHospitations(impteacherUsername: String) {
 
     console.log("data---Query: " + JSON.stringify(query));
     const assignedHospitations = await mongoFind("hospitations", JSON.stringify(query));
-    
+
     if (assignedHospitations && assignedHospitations.length > 0) {
       return assignedHospitations;
     } else {
@@ -145,7 +145,7 @@ export async function fetchAssignedHospitations(impteacherUsername: String) {
 export async function fetchOwnHospitations(usersname: string) {
 
   try {
-    const user = {"teacherUsername": usersname};
+    const user = { "teacherUsername": usersname };
     const ownHospitations = await mongoFind("hospitations", JSON.stringify(user));
     return ownHospitations;
   }
@@ -169,7 +169,7 @@ export async function fetchOwnAssignedHospitations(username: string) {
 
     if (ownAssignedHospitations && ownAssignedHospitations.length > 0) {
       return ownAssignedHospitations;
-    } 
+    }
     else {
       console.log("data---Keine zugeordneten Hospitationen gefunden.");
       return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
@@ -195,7 +195,7 @@ export async function fetchOwnCompletedHospitations(username: string) {
 
     if (ownCompletedHospitations && ownCompletedHospitations.length > 0) {
       return ownCompletedHospitations;
-    } 
+    }
     else {
       console.log("data---Keine zugeordneten Hospitationen gefunden.");
       return []; // Rückgabe eines leeren Arrays, wenn keine Ergebnisse vorhanden sind
@@ -210,12 +210,12 @@ export async function fetchUser(usersname: string) {
   noStore();
 
   try {
-    const usernameObj = JSON.stringify({"username": usersname});
+    const usernameObj = JSON.stringify({ "username": usersname });
     const users = await mongoFind("users", usernameObj);
 
     if (users && users.length > 0) {
       return users[0];
-  }
+    }
     return undefined;
   }
   catch (error) {
@@ -231,9 +231,37 @@ export async function fetchHospitationById(id: ObjectId) {
     await client.connectToDatabase();
     const collection = client.getCollection("hospitations");
 
-    const hospitation = await collection.findOne({"_id" : id});
-    
+    const hospitation = await collection.findOne({ "_id": id });
+
     return hospitation;
+  }
+  catch (error) {
+    console.error('datafetching---Datenbankfehler:', error);
+  }
+  finally {
+    await client.closeDatabaseConnection();
+    console.log('datafetching---Verbindung geschlossen')
+  }
+}
+
+export async function fetchCardData(username: string) {
+
+  noStore();
+  try {
+    await client.connectToDatabase();
+    const collection = client.getCollection("hospitations");
+
+    const totalCount = await collection.countDocuments({ teacherUsername: username });
+    const availableCount = await collection.countDocuments({ teacherUsername: username, status: 'verfügbar' });
+    const assignedCount = await collection.countDocuments({ teacherUsername: username, status: 'vergeben' });
+    const completedCount = await collection.countDocuments({ teacherUsername: username, status: 'abgeschlossen' });
+
+    return {
+      totalCount,
+      availableCount,
+      assignedCount,
+      completedCount,
+    }
   }
   catch (error) {
     console.error('datafetching---Datenbankfehler:', error);
