@@ -104,7 +104,7 @@ export async function completeHospitation(id: string, formData: FormData) {
         );
 
         console.log("dbactions---Hospitation mit id: " + id + " abgeschlossen");
-        revalidatePath('/dashboard/hospitationlist');
+        await revalidatePath('/dashboard/hospitationlist');
         return { message: 'Hospitation abgeschlossen' };
     }
     catch (error) {
@@ -114,6 +114,7 @@ export async function completeHospitation(id: string, formData: FormData) {
     finally {
         await closeDatabaseConnection();
         redirect('/dashboard/hospitationlist');
+        
     }
 }
 

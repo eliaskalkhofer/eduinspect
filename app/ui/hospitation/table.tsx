@@ -56,9 +56,6 @@ export default async function HospitationTable({
                       {hospitation.starttime}
                     </p>
                     <p className="text-xl font-medium">
-                      {hospitation.endtime}
-                    </p>
-                    <p className="text-xl font-medium">
                       {hospitation.subject}
                     </p>
                     <p className="text-xl font-medium">
@@ -85,14 +82,10 @@ export default async function HospitationTable({
                 <th scope="col" className="px-5 py-5 font-medium">
                   Anfang
                 </th>
-                <th scope="col" className="px-5 py-5 font-medium"></th>
-                <th scope="col" className="px-5 py-5 font-medium">
-                  Ende
-                </th>
                 <th scope="col" className="px-5 py-5 font-medium">
                   Fach
                 </th>
-                <th scope="col" className="px-5 py-5 font-medium hidden lg:block">
+                <th scope="col" className="px-5 py-5 font-medium">
                   Information
                 </th>
               </tr>
@@ -107,11 +100,8 @@ export default async function HospitationTable({
                   <td className="whitespace-nowrap px-5 py-3">{hospitation.teacherFirstname} {hospitation.teacherLastname}</td>
                   <td className="whitespace-nowrap px-5 py-3">{hospitation.date}</td>
                   <td className="whitespace-nowrap px-5 py-3">{hospitation.starttime}</td>
-                  <td className="whitespace-nowrap px-5 py-3">-</td>
-                  <td className="whitespace-nowrap px-5 py-3">{hospitation.endtime}</td>
                   <td className="whitespace-nowrap px-5 py-3">{hospitation.subject}</td>
-                  {/* Warum muss py erhöht werden, wenn das element das attribut hidden bekommt? */}
-                  <td className="whitespace-nowrap px-5 py-5 hidden lg:block">{hospitation.information}</td>
+                  <td className="whitespace-nowrap px-5 py-5">{hospitation.information}</td>
                   <td className="whitespace-nowrap px-5 py-3 text-right"><AcceptHospitation id={String(hospitation._id)} username={username} /></td>
                 </tr>
               ))}

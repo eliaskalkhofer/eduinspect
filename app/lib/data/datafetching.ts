@@ -143,7 +143,6 @@ export async function fetchAssignedHospitations(impteacherUsername: String) {
 }
 
 export async function fetchOwnHospitations(usersname: string) {
-  noStore();
 
   try {
     const user = {"teacherUsername": usersname};
