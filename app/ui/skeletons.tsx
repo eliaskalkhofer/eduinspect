@@ -201,35 +201,14 @@ export function TableRowSkeleton() {
 
 export function HospitationsMobileSkeleton() {
   return (
-    // <div className="mb-2 w-full rounded-md bg-white p-4">
-    //   <div className="flex w-full items-center justify-between border-gray-100 pb-8">
-    //     <div className="flex items-center">
-    //       {/* <div className="mr-2 h-8 w-8 rounded-full bg-gray-100"></div> */}
-    //       {/* <div className="h-6 w-24 rounded bg-gray-100"></div> */}
-    //     </div>
-    //     {/* <div className="h-6 w-24 rounded bg-gray-100"></div> */}
-    //   </div>
-    //   <div className="flex w-full items-center justify-between pt-4">
-    //     <div>
-    //       <div className="h-6 w-24 rounded bg-gray-100"></div>
-    //       <div className="mt-2 h-6 w-28 rounded bg-gray-100"></div>
-    //     </div>
-    //     <div className="flex justify-end gap-2">
-    //       <div className="h-10 w-10 rounded bg-gray-100"></div>
-    //       <div className="h-10 w-10 rounded bg-gray-100"></div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="mb-2 flex flex-row items-center w-full rounded-mb bg-white p-4">
       <div className="w-full items-center justify-between">
         <div className="flex flex-col justify-end gap-2">
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
-          <div className="h-7 w-48 rounded bg-gray-100"></div>
+          <div className="h-7 w-28 rounded bg-gray-100"></div>
+          <div className="h-7 w-24 rounded bg-gray-100"></div>
+          <div className="h-7 w-12 rounded bg-gray-100"></div>
+          <div className="h-7 w-28 rounded bg-gray-100"></div>
+          <div className="h-10 w-52 rounded bg-gray-100"></div>
         </div>
       </div>
       <button className="relative flex flex-row lg:h-10 md:h-10 sm:h-40 h-40 items-center justify-center border rounded-lg bg-green-600 bg-opacity-50 hover:bg-green-500 hover:bg-opacity-50 px-4 text-sm font-medium text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 overflow-hidden">
@@ -265,9 +244,6 @@ export function HospitationTableSkeleton() {
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Anfang
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Ende
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Fach
