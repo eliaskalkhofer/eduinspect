@@ -22,6 +22,17 @@ export default async function Form() {
         createHospitationCons = createHospitation.bind(null, username);
     }
 
+    // const locale = new Intl.Locale("de-AT-u-hc-h23");
+    // console.log(locale.hourCycle);
+
+    // function validateTimeInput(input: { value: string; }) {
+    //     var regex = /^([01][0-9]|2[0-3]):[0-5][0-9]$/; // Regular expression for HH:MM format
+    //     if (!regex.test(input.value)) {
+    //       alert("Please enter time in HH:MM .");
+    //       input.value = ""; // Clear the input field if the format is incorrect
+    //     }
+    //   }
+
 
     return (
         <form action={createHospitationCons}>
@@ -36,9 +47,10 @@ export default async function Form() {
                             <input
                                 id="date"
                                 name="date"
-                                type="string"
+                                type="date"
                                 placeholder="tt.mm.jjjj"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                required
                             />
                             <CalendarDaysIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                         </div>
@@ -54,9 +66,11 @@ export default async function Form() {
                             <input
                                 id="starttime"
                                 name="starttime"
-                                type="string"
+                                type="time"
                                 placeholder="hh:mm"
+                                // onBlur="validateTimeInput(this)"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                required
                             />
                             <ClockIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                         </div>
@@ -72,9 +86,10 @@ export default async function Form() {
                             <input
                                 id="endtime"
                                 name="endtime"
-                                type="string"
+                                type="time"
                                 placeholder="hh:mm"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                                required
                             />
                             <ClockIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
                         </div>
