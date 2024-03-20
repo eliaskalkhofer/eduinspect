@@ -59,6 +59,8 @@ Die Home-Seite bietet eine übersichtliche Darstellung der relevanten Daten für
 Die Seite `Hospitation` oder `Hospitation tätigen` bietet eine Übersicht über alle von Kollegen angebotenen Stunden. 
 Durch Klicken auf den grünen Pfeil (rechts in jeder Tabellenzeile) kann man das Angebot eines Kollegen annehmen und sich somit für die Teilnahme an seinem oder ihrem Unterricht registrieren. Darüber hinaus besteht die Möglichkeit, über der Tabelle nach einer bestimmten Hospitation oder einem bestimmten Hospitationsdetail zu suchen, um alle relevanten Ergebnisse zu erhalten.
 
+![HospitatoinScreenImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/Hospitation.png)
+
 ## Hospitationsliste
 Die Hospitationsliste bietet eine Zusammenstellung aller angenommenen Hospitationsangebote von Kollegen. Auf einen Blick lassen sich hier die Themen, Startzeiten und behandelten Fächer der einzelnen Stunden erkennen. Zusätzlich können auch eventuelle zusätzliche Informationen, die der Kollege bei der Angebotserstellung hinzugefügt hat, eingesehen werden.
 
