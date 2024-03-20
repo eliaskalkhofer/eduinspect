@@ -53,7 +53,7 @@ Die Home-Seite bietet eine übersichtliche Darstellung der relevanten Daten für
 
 ==> _Die detaillierte Übersicht über die Stunden und ihre Stati ist auf der Seite `Einheit anbieten` zu finden._
 
-![HomescreenImage]([https://github.com/eliaskalkhofer/eduinspect/blob/main/public/landing_image_right.jpg](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/HomeScreen.png))
+![HomescreenImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/HomeScreen.png)
 
 ## Hospitation
 Die Seite `Hospitation` oder `Hospitation tätigen` bietet eine Übersicht über alle von Kollegen angebotenen Stunden. 
