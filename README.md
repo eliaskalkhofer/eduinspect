@@ -40,7 +40,7 @@ Generiertes Kürzel: `MUSM`
 ### Login
 Für den Login geben Sie einfach Ihr Kürzel und das von Ihnen gewählte Passwort ein. Bei korrekter Eingabe werden Sie unmittelbar zur Startseite der Webanwendung `Home` weitergeleitet.
 
-![LoginImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/login.png)
+![LoginImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/loginscreen.png)
 
 ## Struktur der Webanwendung - nach erfolgreicher Anmeldung 
 In der linken Navigationsleiste sind die Unterseiten logisch strukturiert und bieten einen klaren roten Faden durch die Applikation.
