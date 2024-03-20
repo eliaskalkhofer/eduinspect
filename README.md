@@ -53,6 +53,8 @@ Die Home-Seite bietet eine übersichtliche Darstellung der relevanten Daten für
 
 ==> _Die detaillierte Übersicht über die Stunden und ihre Stati ist auf der Seite `Einheit anbieten` zu finden._
 
+![HomescreenImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/HomeScreen.png)
+
 ## Hospitation
 Die Seite `Hospitation` oder `Hospitation tätigen` bietet eine Übersicht über alle von Kollegen angebotenen Stunden. 
 Durch Klicken auf den grünen Pfeil (rechts in jeder Tabellenzeile) kann man das Angebot eines Kollegen annehmen und sich somit für die Teilnahme an seinem oder ihrem Unterricht registrieren. Darüber hinaus besteht die Möglichkeit, über der Tabelle nach einer bestimmten Hospitation oder einem bestimmten Hospitationsdetail zu suchen, um alle relevanten Ergebnisse zu erhalten.
@@ -92,4 +94,4 @@ Die Feedbacks bieten Einblicke in verschiedene Aspekte des Unterrichts, wie beis
 
 Darüber hinaus ermöglicht die Feedbackübersicht auch einen Austausch unter Kollegen, indem beispielsweise bewährte Praktiken geteilt oder Herausforderungen diskutiert werden können. Auf diese Weise trägt das Feedback nicht nur zur individuellen Lehrerentwicklung bei, sondern fördert auch eine kooperative und unterstützende Lehrkultur innerhalb der Schule.
 
-![Testimage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/landing_image_right.jpg)
+
