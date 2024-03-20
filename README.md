@@ -73,6 +73,8 @@ Nachdem Feedback gegeben wurde oder falls keine Rückmeldung erfolgt, kann durch
 ## Einheit anbieten
 Auf der Seite `Einheit anbieten` befindet sich eine Tabelle mit den derzeit angebotenen Unterrichtseinheiten und deren Details. Durch klicken auf den Button mit dem Bleistift-Symbol können die Details einer angebotenen Einheit angepasst werden. Neben diesem Button befindet sich noch ein weiterer Button, um das Angebot zu revertieren bzw. das Angebot zu löschen. 
 
+![EinheitAnbietenImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/einheit_anbieten.png)
+
 ### Angebot erstellen
 Über der Tabelle befindet sich eine orange Schaltfläche `Hospitation anbieten`, um eine neues Hospitationsangebot für andere Lehrer hinzuzufügen. 
 
