@@ -68,6 +68,8 @@ Nach dem Klick auf den orangen Pfeil rechts von einem Eintrag erfolgt eine Weite
 
 Nachdem Feedback gegeben wurde oder falls keine Rückmeldung erfolgt, kann durch Klicken auf die Schaltfläche `Abschließen` die entsprechende Hospitation als abgeschlossen markiert und aus der Auflistung entfernt werden.
 
+![HospitatoinslisteImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/Hospitationsliste.png)
+
 ## Einheit anbieten
 Auf der Seite `Einheit anbieten` befindet sich eine Tabelle mit den derzeit angebotenen Unterrichtseinheiten und deren Details. Durch klicken auf den Button mit dem Bleistift-Symbol können die Details einer angebotenen Einheit angepasst werden. Neben diesem Button befindet sich noch ein weiterer Button, um das Angebot zu revertieren bzw. das Angebot zu löschen. 
 
