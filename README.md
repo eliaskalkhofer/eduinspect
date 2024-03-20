@@ -93,6 +93,8 @@ Nachdem diese Details eingegeben wurde klicken Sie einfach auf die orange Schalt
 ## Eingang
 Im Menü `Eingang` befinden sich alljene Stunden, die Kollegen angenommen haben.
 
+![EingangImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/eingang.png)
+
 ## Feedback
 Unter dem Menüpunkt "Feedbackübersicht" sind sämtliche Rückmeldungen ersichtlich, die einem von Kollegen im Zusammenhang mit dem eigenen Unterricht gegeben wurden. Diese Rückmeldungen dienen als wertvolle Quelle für die persönliche Weiterentwicklung und ermöglichen es, sich an ihnen zu orientieren oder daraus zu lernen.
 
