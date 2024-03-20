@@ -98,6 +98,8 @@ Im Menü `Eingang` befinden sich alljene Stunden, die Kollegen angenommen haben.
 ## Feedback
 Unter dem Menüpunkt "Feedbackübersicht" sind sämtliche Rückmeldungen ersichtlich, die einem von Kollegen im Zusammenhang mit dem eigenen Unterricht gegeben wurden. Diese Rückmeldungen dienen als wertvolle Quelle für die persönliche Weiterentwicklung und ermöglichen es, sich an ihnen zu orientieren oder daraus zu lernen.
 
+![FeedbackImage](https://github.com/eliaskalkhofer/eduinspect/blob/main/public/doc_images/feedback.png)
+
 Die Feedbacks bieten Einblicke in verschiedene Aspekte des Unterrichts, wie beispielsweise Unterrichtsstil, Methoden, Interaktion mit den Schülern und die Wirksamkeit der Lehrinhalte. Durch die Analyse und Reflexion dieser Rückmeldungen können Lehrkräfte ihre Unterrichtspraxis gezielt verbessern und an die Bedürfnisse ihrer Schülerinnen und Schüler anpassen.
 
 Darüber hinaus ermöglicht die Feedbackübersicht auch einen Austausch unter Kollegen, indem beispielsweise bewährte Praktiken geteilt oder Herausforderungen diskutiert werden können. Auf diese Weise trägt das Feedback nicht nur zur individuellen Lehrerentwicklung bei, sondern fördert auch eine kooperative und unterstützende Lehrkultur innerhalb der Schule.
