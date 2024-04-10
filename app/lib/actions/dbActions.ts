@@ -85,6 +85,8 @@ export async function register(
                 lastname: lastname,
                 password: hashedPassword
             });
+        } else {
+            redirect('/login');
         }
         const formData: FormData = createFormData(username, password1);
         try {
